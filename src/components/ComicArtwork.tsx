@@ -2,10 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const panels = Array.from({ length: 10 }, (_, i) => ({
   id: i + 1,
@@ -21,34 +17,33 @@ export default function ComicArtwork() {
     const container = containerRef.current;
     if (!container) return;
 
-    const panelElements = gsap.utils.toArray(".comic-panel") as HTMLElement[];
-    
-    // Toggle UI visibility based on section entry/exit
-    ScrollTrigger.create({
-      trigger: container,
-      start: "top center",
-      end: "bottom center",
-      onEnter: () => setShowUI(true),
-      onEnterBack: () => setShowUI(true),
-      onLeave: () => setShowUI(false),
-      onLeaveBack: () => setShowUI(false),
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowUI(entry.isIntersecting);
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(container);
 
-    // Create the sticky stack effect
-    panelElements.forEach((panel, i) => {
-      ScrollTrigger.create({
-        trigger: panel,
-        start: "top top",
-        pin: true,
-        pinSpacing: false,
-        onEnter: () => setCurrentPanel(i + 1),
-        onEnterBack: () => setCurrentPanel(i + 1),
-      });
-    });
+    // Track which panel is most visible
+    const panelObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = Number(entry.target.getAttribute("data-panel"));
+            if (id) setCurrentPanel(id);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
 
-    // Cleanup
+    const panelEls = container.querySelectorAll("[data-panel]");
+    panelEls.forEach((el) => panelObserver.observe(el));
+
     return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
+      observer.disconnect();
+      panelObserver.disconnect();
     };
   }, []);
 
@@ -97,12 +92,14 @@ export default function ComicArtwork() {
         </p>
       </div>
 
-      {/* Panels Stack */}
-      <div className="flex flex-col relative z-0">
+      {/* Sticky Stack Panels */}
+      <div className="relative w-full">
         {panels.map((panel) => (
           <div
             key={panel.id}
-            className="comic-panel h-screen w-full flex items-center justify-center"
+            data-panel={panel.id}
+            className="sticky top-0 h-screen w-full bg-comic-bg flex items-center justify-center"
+            style={{ zIndex: panel.id }}
           >
             <div className="relative w-full h-full">
               <Image
@@ -117,9 +114,6 @@ export default function ComicArtwork() {
           </div>
         ))}
       </div>
-      
-      {/* Visual spacer to prevent jumping at the end of the section */}
-      <div className="h-screen w-full bg-comic-bg"></div>
     </section>
   );
 }
