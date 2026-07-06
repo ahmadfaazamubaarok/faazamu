@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #1B2A4A;      /* Navy (primary) */
+  --color-secondary: #3D5A80;    /* Blue (secondary) */
+  --color-accent: #EF8354;       /* Orange (accent) */
+  --color-cream: #FAF3E8;        /* Cream (background alt) */
+  --color-text-dark: #222222;    /* Text dark */
+  --color-text-muted: #6B7280;   /* Text muted */
+  --color-comic-bg: #6C5CE7;     /* Purple background for Comic Artwork */
+
+  --font-sans: var(--font-poppins), system-ui, -apple-system, sans-serif;
+}
+
+/* Custom global styles */
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text-dark);
+  background-color: #ffffff;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-secondary);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
