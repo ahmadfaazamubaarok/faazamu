@@ -102,16 +102,16 @@ export default function ComicArtwork() {
         {panels.map((panel) => (
           <div
             key={panel.id}
-            className="comic-panel h-screen w-full flex items-center justify-center p-4 md:p-12 lg:p-24"
+            className="comic-panel h-screen w-full flex items-center justify-center"
           >
-            <div className="relative w-full h-full max-w-4xl shadow-[0_0_50px_rgba(0,0,0,0.5)] rounded-2xl overflow-hidden bg-[#2a1b4a]/20 border border-white/10 backdrop-blur-sm">
+            <div className="relative w-full h-full">
               <Image
                 src={panel.src}
                 alt={`Comic Panel ${panel.id}`}
                 fill
-                className="object-contain p-4 md:p-8"
+                className="object-contain"
                 preload={panel.id <= 2}
-                sizes="(max-w-1024px) 100vw, 1024px"
+                sizes="(max-width: 1024px) 100vw, 1024px"
               />
             </div>
           </div>

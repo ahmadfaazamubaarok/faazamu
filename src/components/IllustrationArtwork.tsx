@@ -7,15 +7,15 @@ import Image from "next/image";
 const artworks = [
   {
     src: "/assets/illustrations/portofolio/illustration1.png",
-    title: "Diega — National Mascot Champion",
+    title: "Marimenggambar Community's Poster",
   },
   {
     src: "/assets/illustrations/portofolio/illustration2.png",
-    title: "Character Design",
+    title: "Gambar Bareng Community's Poster",
   },
   {
     src: "/assets/illustrations/portofolio/illustration3.png",
-    title: "Comic Illustration",
+    title: "Example Illustration",
   },
 ];
 
@@ -67,27 +67,26 @@ export default function IllustrationArtwork() {
           </div>
         </div>
 
-        {/* Main Content Area */}
-        <div className="relative w-full aspect-video md:aspect-[21/9] flex items-center justify-center">
+        {/* Main Content Area - Vertical Stack */}
+        <div className="relative w-full flex flex-col items-center">
           
-          {/* Base Layer: Barok on Rocket Pencil */}
+          {/* Base Layer: Barok on Rocket Pencil — Large, dominant */}
           <motion.div
             style={{ y: barokY }}
-            className="relative z-0 w-full max-w-[800px] aspect-square md:aspect-video"
+            className="relative z-0 w-full max-w-[600px] lg:max-w-[700px] aspect-[3/4]"
           >
             <Image
               src="/assets/illustrations/barok/illustrationArtwork.png"
               alt="Barok on rocket pencil"
               fill
               className="object-contain"
-              sizes="(max-w-1280px) 100vw, 800px"
+              sizes="(max-width: 768px) 90vw, 700px"
             />
           </motion.div>
 
-          {/* Foreground Layer: 3 Thumbnails Overlapping */}
-          <div className="absolute inset-0 z-10 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12 pointer-events-none">
+          {/* Foreground Layer: 3 Thumbnails — overlapping Barok from below */}
+          <div className="relative z-10 w-full -mt-24 md:-mt-32 lg:-mt-40 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto">
             {artworks.map((art, index) => {
-              // Select the corresponding Y transform
               const y = index === 0 ? thumb1Y : index === 1 ? thumb2Y : thumb3Y;
               
               return (
@@ -96,14 +95,14 @@ export default function IllustrationArtwork() {
                   style={{ y, opacity: thumbOpacity }}
                   className="flex flex-col gap-4 pointer-events-auto group"
                 >
-                  <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
+                  <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
                     <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
                     <Image
                       src={art.src}
                       alt={art.title}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-700"
-                      sizes="(max-w-768px) 100vw, 33vw"
+                      sizes="(max-width: 768px) 100vw, 33vw"
                     />
                   </div>
                   <div className="px-2">

@@ -56,31 +56,16 @@ export default function Hero() {
 
       {/* 3. Central Character and Floating Elements Layer (z-20) */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
-        <div className="relative w-full h-full max-w-5xl mx-auto flex items-center justify-center">
+        <div className="relative w-[90%] sm:w-[75%] md:w-[60%] lg:w-[55%] aspect-square">
           
-          {/* Base Character (Barok) - Scrolls slower */}
-          <motion.div
-            style={{ y: barokY, willChange: "transform" }}
-            className="absolute bottom-[-5%] md:bottom-[-10%] w-[85%] sm:w-[65%] md:w-[50%] lg:w-[45%] h-auto aspect-square flex items-end justify-center"
-          >
-            <Image
-              src="/assets/illustrations/barok/heroLayerBarok.png"
-              alt="Barok character drawing"
-              width={600}
-              height={600}
-              preload
-              className="object-contain drop-shadow-[0_15px_15px_rgba(0,0,0,0.3)]"
-            />
-          </motion.div>
-
-          {/* Floating Sketch Papers - Scrolls faster and rotates */}
+          {/* Floating Sketch Papers - Scrolls faster and rotates (behind Barok) */}
           <motion.div
             style={{ 
               y: paperY, 
               rotate: paperRotate,
               willChange: "transform" 
             }}
-            className="absolute inset-0 w-full h-full flex items-center justify-center scale-105"
+            className="absolute inset-0 w-full h-full"
           >
             <Image
               src="/assets/illustrations/barok/heroLayerPaper.png"
@@ -88,6 +73,20 @@ export default function Hero() {
               fill
               preload
               className="object-contain"
+            />
+          </motion.div>
+
+          {/* Base Character (Barok) - Scrolls slower (on top of papers) */}
+          <motion.div
+            style={{ y: barokY, willChange: "transform" }}
+            className="absolute inset-0 w-full h-full"
+          >
+            <Image
+              src="/assets/illustrations/barok/heroLayerBarok.png"
+              alt="Barok character drawing"
+              fill
+              preload
+              className="object-contain drop-shadow-[0_15px_15px_rgba(0,0,0,0.3)]"
             />
           </motion.div>
 
