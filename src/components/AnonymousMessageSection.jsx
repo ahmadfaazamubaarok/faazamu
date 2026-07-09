@@ -62,13 +62,8 @@ const AnonymousMessageSection = () => {
 
     setStatus('loading');
 
-    // Persiapkan data menggunakan FormData (seringkali lebih stabil di Web3Forms)
-    const formData = new FormData();
-    formData.append("access_key", WEB3FORMS_ACCESS_KEY);
-    formData.append("subject", "New Anonymous Confession/Message!");
-    formData.append("name", "Anonymous User");
-    formData.append("email", "anonymous@faazamu.xyz"); // Web3Forms kadang butuh field email agar tidak dianggap spam
-    formData.append("message", message);
+    // Ambil data langsung dari form HTML menggunakan event.target sesuai standar Web3Forms
+    const formData = new FormData(e.target);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -182,11 +177,19 @@ const AnonymousMessageSection = () => {
                 onSubmit={handleSubmit}
                 className="flex flex-col gap-4"
               >
+                {/* Field Tersembunyi standar Web3Forms */}
+                <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+                <input type="hidden" name="subject" value="New Anonymous Confession/Message!" />
+                <input type="hidden" name="from_name" value="Anonymous User" />
+                <input type="hidden" name="name" value="Anonymous User" />
+                <input type="hidden" name="email" value="anonymous@faazamu.xyz" />
+
                 {/* Honeypot Field - DILARANG DIHAPUS, INI JEBAKAN BOT */}
                 <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
 
                 <div className="relative">
                   <textarea
+                    name="message"
                     value={message}
                     onChange={(e) => {
                       setMessage(e.target.value);
