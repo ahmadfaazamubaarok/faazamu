@@ -3,26 +3,26 @@ import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-mot
 import Skills from './Skills';
 
 // Import images
-import bgIllustration from '../assets/illustrationArtworks/bgIllustrationArtworks.png';
-import awanBelakang from '../assets/illustrationArtworks/awanBelakang.png';
-import awanDepan from '../assets/illustrationArtworks/awanDepan.png';
-import barokRoket from '../assets/illustrationArtworks/barokRoketPensil.png';
-import img1 from '../assets/illustrationArtworks/illustrations/illustration1.png';
-import img2 from '../assets/illustrationArtworks/illustrations/illustration2.png';
-import img3 from '../assets/illustrationArtworks/illustrations/illustration3.png';
-import comic1 from '../assets/comicArworks/comic1.png';
-import comic2 from '../assets/comicArworks/comic2.png';
-import comic3 from '../assets/comicArworks/comic3.png';
-import comic4 from '../assets/comicArworks/comic4.png';
-import comic5 from '../assets/comicArworks/comic5.png';
-import comic6 from '../assets/comicArworks/comic6.png';
-import comic7 from '../assets/comicArworks/comic7.png';
-import comic8 from '../assets/comicArworks/comic8.png';
-import comic9 from '../assets/comicArworks/comic9.png';
-import comic10 from '../assets/comicArworks/comic10.png';
+import bgIllustration from '../assets/illustrationArtworks/bgIllustrationArtworks.webp';
+import awanBelakang from '../assets/illustrationArtworks/awanBelakang.webp';
+import awanDepan from '../assets/illustrationArtworks/awanDepan.webp';
+import barokRoket from '../assets/illustrationArtworks/barokRoketPensil.webp';
+import img1 from '../assets/illustrationArtworks/illustrations/illustration1.webp';
+import img2 from '../assets/illustrationArtworks/illustrations/illustration2.webp';
+import img3 from '../assets/illustrationArtworks/illustrations/illustration3.webp';
+import comic1 from '../assets/comicArworks/comic1.webp';
+import comic2 from '../assets/comicArworks/comic2.webp';
+import comic3 from '../assets/comicArworks/comic3.webp';
+import comic4 from '../assets/comicArworks/comic4.webp';
+import comic5 from '../assets/comicArworks/comic5.webp';
+import comic6 from '../assets/comicArworks/comic6.webp';
+import comic7 from '../assets/comicArworks/comic7.webp';
+import comic8 from '../assets/comicArworks/comic8.webp';
+import comic9 from '../assets/comicArworks/comic9.webp';
+import comic10 from '../assets/comicArworks/comic10.webp';
 
-import diegaMain from '../assets/characterDesign/diega/diegaMain.png';
-import diegaVariant from '../assets/characterDesign/diega/diegaVariant.png';
+import diegaMain from '../assets/characterDesign/diega/diegaMain.webp';
+import diegaVariant from '../assets/characterDesign/diega/diegaVariant.webp';
 
 const comicItems = [
   comic1, comic2, comic3, comic4, comic5, 
@@ -187,10 +187,10 @@ const ProjectsSection = () => {
   );
 
   // 9. Animasi IDE Code Editor (Muncul dari Bawah)
-  // Mulai muncul setelah lingkaran penutup selesai (0.78)
+  // Muncul bersamaan dengan menyusutnya lingkaran (selesai di 0.78)
   const ideY = useTransform(
     scrollYProgress,
-    [0.78, 0.88, 1],
+    [0.72, 0.78, 1],
     ["100vh", "0vh", "0vh"]
   );
 
@@ -215,9 +215,10 @@ const ProjectsSection = () => {
       setCurrentPanel(count);
     }
 
-    // 2. IDE Code Typing Effect (0.88 - 1.0)
-    if (latest >= 0.88) {
-      const progress = (latest - 0.88) / 0.12;
+    // 2. IDE Code Typing Effect (Mulai di 0.78 setelah IDE muncul penuh)
+    if (latest >= 0.78) {
+      // Mengubah pembagi menjadi 0.22 agar animasi mengetik pas selesai di 1.00 (tidak ada sisa scroll kosong)
+      const progress = (latest - 0.78) / 0.22;
       const chars = Math.floor(progress * fullCodeLength);
       setCodeChars(Math.min(chars, fullCodeLength));
     } else {
@@ -232,10 +233,10 @@ const ProjectsSection = () => {
   return (
     <>
     {/* Container diperpanjang jadi 3000vh untuk mengakomodasi penutup lingkaran dan Web Projects */}
-    <section ref={containerRef} className="relative w-full h-[3000vh]">
+    <section id="karya" ref={containerRef} className="relative w-full h-[3000vh]">
       
       {/* Sticky container */}
-      <div className="sticky top-0 w-full h-screen overflow-hidden bg-slate-800">
+        <div className="sticky top-0 w-full h-screen overflow-hidden bg-black">
         
         {/* Lapis Dasar (Lapis 5): Web Projects */}
         <div className="absolute inset-0 w-full h-full z-0 flex flex-col items-center">
@@ -247,10 +248,10 @@ const ProjectsSection = () => {
             {/* Judul Web Projects (Menempel di atas IDE) */}
             <div className="w-[95%] md:w-[85%] lg:w-[75%] max-w-5xl mb-4 md:mb-6 px-2">
               <p className="text-xs md:text-sm text-emerald-400 font-mono tracking-widest drop-shadow-md mb-1">
-                <span className="text-white/50">const</span> <span className="text-blue-400">section</span> <span className="text-white/50">=</span> <span className="text-emerald-300">"Explore my"</span>;
+                <span className="text-white/50">const</span> <span className="text-blue-400">section</span> <span className="text-white/50">=</span> <span className="text-emerald-300">"Jelajahi"</span>;
               </p>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white drop-shadow-lg">
-                Web Projects
+                Proyek Web
               </h1>
             </div>
 
@@ -351,8 +352,8 @@ const ProjectsSection = () => {
 
           {/* Judul Section (Diubah jadi putih agar terlihat di background gelap) */}
           <div className="absolute top-12 left-6 md:top-24 md:left-12 lg:left-24 z-20 flex flex-col pointer-events-none drop-shadow-2xl">
-            <p className="text-sm md:text-lg lg:text-xl font-light tracking-widest text-[#0b1a30] drop-shadow-md">Explore my</p>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mt-2 text-[#0b1a30] drop-shadow-lg">Illustration<br/>Artworks</h1>
+            <p className="text-sm md:text-lg lg:text-xl font-light tracking-widest text-[#0b1a30] drop-shadow-md">Jelajahi</p>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mt-2 text-[#0b1a30] drop-shadow-lg">Karya<br/>Ilustrasi</h1>
           </div>
 
           {/* Barok Roket Pensil */}
@@ -401,8 +402,8 @@ const ProjectsSection = () => {
         >
           {/* Judul Section Comic & Counter */}
           <div className="absolute top-12 left-6 md:top-24 md:left-12 lg:left-24 z-20 flex flex-col pointer-events-none drop-shadow-2xl">
-            <p className="text-sm md:text-lg lg:text-xl font-light tracking-widest text-white drop-shadow-md">Explore my</p>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mt-2 text-[#e7992d] drop-shadow-lg">Comic<br />Artworks</h1>
+            <p className="text-sm md:text-lg lg:text-xl font-light tracking-widest text-white drop-shadow-md">Jelajahi</p>
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mt-2 text-[#e7992d] drop-shadow-lg">Karya<br />Komik</h1>
                <p className="text-md text-white/60 mt-6 max-w-sm">
                   Komik ini memenangkan juara 3 tingkat Provinsi DIY di lomba PEKSIMIPROV DIY 2026.
                </p>
@@ -428,34 +429,34 @@ const ProjectsSection = () => {
 
         {/* Lapis 4: Konten Character Design (ter-masking oleh sapuan horizontal dari bawah) */}
         <motion.div 
-          style={{ clipPath: clipPathCharacter }}
+          style={{ clipPath: clipPathCharacter, willChange: "clip-path" }}
           className="absolute inset-0 w-full h-full z-50 overflow-hidden bg-[#0d9488]"
         >
           {/* Konten Scrollable menggunakan charScrollY */}
           <motion.div 
-            style={{ y: charScrollY }}
+            style={{ y: charScrollY, willChange: "transform" }}
             className="w-full flex flex-col pt-40 md:pt-0"
           >
             {/* Karakter 1: Diega */}
             <div className="w-full h-screen flex flex-col md:flex-row items-center justify-center px-6 lg:px-24">
               <div className="md:w-1/2 flex flex-col z-20 mt-32 md:mt-0 pl-0 md:pl-12 lg:pl-32">
                 <h2 className="text-6xl md:text-7xl lg:text-9xl font-bold text-white drop-shadow-xl">Diega</h2>
-                <p className="text-xl md:text-3xl font-light text-white/80 mt-2 tracking-wide">Character Design</p>
+                <p className="text-xl md:text-3xl font-light text-white/80 mt-2 tracking-wide">Desain Karakter</p>
                 <p className="text-md text-white/60 mt-6 max-w-sm">
                   Desain maskot ini memenangkan Juara 1 nasional di ajang OCEANIC MASCOT CHALLENGE 2026, yang diselenggarakan oleh HIMADEGA UNESA dengan tema "Diving into the Depths of Identity". Maskot ini menonjolkan gaya visual yang hidup, dinamis, dan memiliki identitas yang kuat.
                 </p>
               </div>
               <div className="md:w-1/2 flex flex-col items-center justify-center gap-2 md:gap-4 mt-12 md:mt-0 z-20 h-[60vh] md:h-[80vh]">
-                <img src={diegaMain} alt="Diega Main" className="w-full h-[65%] md:h-[70%] object-contain hover:scale-105 transition-transform duration-300 drop-shadow-2xl" />
-                <img src={diegaVariant} alt="Diega Variant" className="w-2/3 md:w-3/4 h-[35%] md:h-[30%] object-contain hover:scale-105 transition-transform duration-300 drop-shadow-2xl opacity-90" />
+                <img src={diegaMain} alt="Diega Main" className="w-full h-[65%] md:h-[70%] object-contain hover:scale-105 transition-transform duration-300" />
+                <img src={diegaVariant} alt="Diega Variant" className="w-2/3 md:w-3/4 h-[35%] md:h-[30%] object-contain hover:scale-105 transition-transform duration-300 opacity-90" />
               </div>
             </div>
 
             {/* Karakter 2: Placeholder (Duplikat sementara) */}
             <div className="w-full h-screen flex flex-col md:flex-row items-center justify-center px-6 lg:px-24 bg-black/10">
               <div className="md:w-1/2 flex flex-col items-center justify-center gap-2 md:gap-4 mb-12 md:mt-0 z-20 h-[60vh] md:h-[80vh] order-2 md:order-1">
-                <img src={diegaMain} alt="Karakter 2 Placeholder" className="w-full h-[65%] md:h-[70%] object-contain opacity-20 grayscale" />
-                <img src={diegaVariant} alt="Karakter 2 Placeholder" className="w-2/3 md:w-3/4 h-[35%] md:h-[30%] object-contain opacity-20 grayscale" />
+                <img src={diegaMain} alt="Karakter 2 Placeholder" className="w-full h-[65%] md:h-[70%] object-contain opacity-10" />
+                <img src={diegaVariant} alt="Karakter 2 Placeholder" className="w-2/3 md:w-3/4 h-[35%] md:h-[30%] object-contain opacity-10" />
               </div>
               <div className="md:w-1/2 flex flex-col z-20 order-1 md:order-2 pr-0 md:pr-12 lg:pr-32 md:text-right items-start md:items-end mt-32 md:mt-0">
                 <h2 className="text-6xl md:text-7xl lg:text-9xl font-bold text-white drop-shadow-xl">Char 02</h2>
@@ -477,70 +478,139 @@ const ProjectsSection = () => {
 
     {/* Section Card Web Projects (Native Scroll) */}
     {/* Muncul secara alami setelah pengguna melewati area sticky 3000vh */}
-    <section className="relative w-full min-h-screen bg-slate-900 pt-24 pb-40 px-6 md:px-12 lg:px-24 z-20">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section className="relative w-full min-h-screen bg-black pt-24 pb-40 px-6 md:px-12 lg:px-24 z-20">
+      <div className="max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           
-          {/* Card Placeholder 1 */}
-          <div className="bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-emerald-500/50 transition-colors group shadow-xl">
-            <div className="w-full h-48 bg-slate-700 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-blue-600/20 group-hover:scale-110 transition-transform duration-700"></div>
-              <div className="absolute inset-0 flex items-center justify-center opacity-30">
-                <span className="text-6xl text-white">🌐</span>
+            {/* Project 1: Portfolio Web */}
+            <a href="https://faazamu.xyz" target="_blank" rel="noopener noreferrer" className="relative block rounded-[2rem] p-[1px] overflow-hidden group hover:-translate-y-2 transition-all duration-500 shadow-xl hover:shadow-[0_20px_40px_-15px_rgba(16,185,129,0.3)] min-h-[280px]">
+              {/* Outer Glow on Hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/50 via-transparent to-blue-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              {/* Card Body */}
+              <div className="relative bg-[#0b1121] rounded-[2rem] overflow-hidden h-full p-6 md:p-8 flex flex-col border border-white/5 group-hover:border-white/10 transition-colors duration-500 z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-emerald-500/10 via-[#0b1121]/50 to-[#0b1121]">
+                
+                {/* Giant Background Icon */}
+                <div className="absolute -bottom-8 -right-8 text-[10rem] opacity-[0.02] group-hover:opacity-10 group-hover:-translate-y-4 group-hover:-translate-x-4 group-hover:-rotate-12 transition-all duration-700 pointer-events-none blur-[4px] group-hover:blur-none select-none">
+                   👨‍💻
+                </div>
+                
+                <div className="relative z-10 flex-1 flex flex-col">
+                   {/* Header: Icon & Arrow */}
+                   <div className="flex items-start justify-between mb-6">
+                      <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-emerald-500/10 to-blue-600/10 flex items-center justify-center border border-emerald-500/20 shadow-[0_0_20px_rgba(16,185,129,0.1)] group-hover:scale-110 group-hover:rotate-6 group-hover:bg-emerald-500/20 transition-all duration-500 backdrop-blur-xl">
+                         <span className="text-2xl md:text-3xl group-hover:scale-110 transition-transform duration-500">👨‍💻</span>
+                      </div>
+                      <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-emerald-500/20 group-hover:border-emerald-500/30 transition-colors duration-500">
+                        <svg className="w-4 h-4 text-white/30 group-hover:text-emerald-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </div>
+                   </div>
+                   
+                   {/* Content */}
+                   <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors duration-300">faazamu.xyz</h3>
+                   
+                   <p className="text-slate-400 mb-6 leading-relaxed font-light text-sm max-w-[95%] flex-1">
+                      Portfolio Website (Web Ini). Platform interaktif untuk memamerkan karya ilustrasi, desain karakter, dan proyek pengembangan web.
+                   </p>
+                   
+                   {/* Tags */}
+                   <div className="flex flex-wrap gap-2 mt-auto">
+                      <span className="px-3 py-1.5 bg-emerald-500/10 text-emerald-300 text-[10px] md:text-xs font-medium rounded-full border border-emerald-500/20 backdrop-blur-sm group-hover:bg-emerald-500/20 group-hover:border-emerald-500/40 transition-colors">React</span>
+                      <span className="px-3 py-1.5 bg-emerald-500/10 text-emerald-300 text-[10px] md:text-xs font-medium rounded-full border border-emerald-500/20 backdrop-blur-sm group-hover:bg-emerald-500/20 group-hover:border-emerald-500/40 transition-colors">Tailwind</span>
+                      <span className="px-3 py-1.5 bg-emerald-500/10 text-emerald-300 text-[10px] md:text-xs font-medium rounded-full border border-emerald-500/20 backdrop-blur-sm group-hover:bg-emerald-500/20 group-hover:border-emerald-500/40 transition-colors">Framer</span>
+                   </div>
+                </div>
               </div>
-            </div>
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-white mb-2">Portfolio Website V4</h3>
-              <p className="text-sm text-white/60 mb-4 leading-relaxed">
-                Platform interaktif untuk memamerkan karya ilustrasi, desain karakter, dan proyek pengembangan web.
-              </p>
-              <div className="flex gap-2">
-                <span className="px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs rounded-full border border-emerald-500/20">React</span>
-                <span className="px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs rounded-full border border-emerald-500/20">Tailwind</span>
-                <span className="px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs rounded-full border border-emerald-500/20">Framer</span>
-              </div>
-            </div>
-          </div>
+            </a>
 
-          {/* Card Placeholder 2 */}
-          <div className="bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-emerald-500/50 transition-colors group shadow-xl">
-            <div className="w-full h-48 bg-slate-700 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-600/20 group-hover:scale-110 transition-transform duration-700"></div>
-              <div className="absolute inset-0 flex items-center justify-center opacity-30">
-                <span className="text-6xl text-white">🛒</span>
+            {/* Project 2: PMB Salpur */}
+            <a href="https://pmb.salpur.com" target="_blank" rel="noopener noreferrer" className="relative block rounded-[2rem] p-[1px] overflow-hidden group hover:-translate-y-2 transition-all duration-500 shadow-xl hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.3)] min-h-[280px]">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/50 via-transparent to-purple-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative bg-[#0b1121] rounded-[2rem] overflow-hidden h-full p-6 md:p-8 flex flex-col border border-white/5 group-hover:border-white/10 transition-colors duration-500 z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-500/10 via-[#0b1121]/50 to-[#0b1121]">
+                <div className="absolute -bottom-8 -right-8 text-[10rem] opacity-[0.02] group-hover:opacity-10 group-hover:-translate-y-4 group-hover:-translate-x-4 group-hover:-rotate-12 transition-all duration-700 pointer-events-none blur-[4px] group-hover:blur-none select-none">
+                   📝
+                </div>
+                <div className="relative z-10 flex-1 flex flex-col">
+                   <div className="flex items-start justify-between mb-6">
+                      <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-blue-500/10 to-purple-600/10 flex items-center justify-center border border-blue-500/20 shadow-[0_0_20px_rgba(59,130,246,0.1)] group-hover:scale-110 group-hover:-rotate-6 group-hover:bg-blue-500/20 transition-all duration-500 backdrop-blur-xl">
+                         <span className="text-2xl md:text-3xl group-hover:scale-110 transition-transform duration-500">📝</span>
+                      </div>
+                      <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-blue-500/20 group-hover:border-blue-500/30 transition-colors duration-500">
+                        <svg className="w-4 h-4 text-white/30 group-hover:text-blue-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </div>
+                   </div>
+                   <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300">pmb.salpur.com</h3>
+                   <p className="text-slate-400 mb-6 leading-relaxed font-light text-sm max-w-[95%] flex-1">
+                      Sistem pendaftaran siswa baru Salsabila Purworejo. Memudahkan proses administrasi dan pendaftaran calon siswa secara online.
+                   </p>
+                   <div className="flex flex-wrap gap-2 mt-auto">
+                      <span className="px-3 py-1.5 bg-blue-500/10 text-blue-300 text-[10px] md:text-xs font-medium rounded-full border border-blue-500/20 backdrop-blur-sm group-hover:bg-blue-500/20 group-hover:border-blue-500/40 transition-colors">Web System</span>
+                   </div>
+                </div>
               </div>
-            </div>
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-white mb-2">E-Commerce Platform</h3>
-              <p className="text-sm text-white/60 mb-4 leading-relaxed">
-                Aplikasi toko online dengan sistem manajemen inventaris, keranjang belanja, dan integrasi pembayaran.
-              </p>
-              <div className="flex gap-2">
-                <span className="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full border border-blue-500/20">Next.js</span>
-                <span className="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full border border-blue-500/20">Stripe</span>
-              </div>
-            </div>
-          </div>
+            </a>
 
-          {/* Card Placeholder 3 */}
-          <div className="bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-emerald-500/50 transition-colors group shadow-xl">
-            <div className="w-full h-48 bg-slate-700 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-600/20 group-hover:scale-110 transition-transform duration-700"></div>
-              <div className="absolute inset-0 flex items-center justify-center opacity-30">
-                <span className="text-6xl text-white">📱</span>
+            {/* Project 3: PPASM */}
+            <a href="https://ppasm.com" target="_blank" rel="noopener noreferrer" className="relative block rounded-[2rem] p-[1px] overflow-hidden group hover:-translate-y-2 transition-all duration-500 shadow-xl hover:shadow-[0_20px_40px_-15px_rgba(168,85,247,0.3)] min-h-[280px]">
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/50 via-transparent to-pink-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative bg-[#0b1121] rounded-[2rem] overflow-hidden h-full p-6 md:p-8 flex flex-col border border-white/5 group-hover:border-white/10 transition-colors duration-500 z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-purple-500/10 via-[#0b1121]/50 to-[#0b1121]">
+                <div className="absolute -bottom-8 -right-8 text-[10rem] opacity-[0.02] group-hover:opacity-10 group-hover:-translate-y-4 group-hover:-translate-x-4 group-hover:rotate-12 transition-all duration-700 pointer-events-none blur-[4px] group-hover:blur-none select-none">
+                   🕌
+                </div>
+                <div className="relative z-10 flex-1 flex flex-col">
+                   <div className="flex items-start justify-between mb-6">
+                      <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-purple-500/10 to-pink-600/10 flex items-center justify-center border border-purple-500/20 shadow-[0_0_20px_rgba(168,85,247,0.1)] group-hover:scale-110 group-hover:rotate-6 group-hover:bg-purple-500/20 transition-all duration-500 backdrop-blur-xl">
+                         <span className="text-2xl md:text-3xl group-hover:scale-110 transition-transform duration-500">🕌</span>
+                      </div>
+                      <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-purple-500/20 group-hover:border-purple-500/30 transition-colors duration-500">
+                        <svg className="w-4 h-4 text-white/30 group-hover:text-purple-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </div>
+                   </div>
+                   <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300">ppasm.com</h3>
+                   <p className="text-slate-400 mb-6 leading-relaxed font-light text-sm max-w-[95%] flex-1">
+                      Website resmi Pesantren Assalafiyyah Mlangi. Menampilkan profil, kegiatan, dan informasi seputar pondok pesantren.
+                   </p>
+                   <div className="flex flex-wrap gap-2 mt-auto">
+                      <span className="px-3 py-1.5 bg-purple-500/10 text-purple-300 text-[10px] md:text-xs font-medium rounded-full border border-purple-500/20 backdrop-blur-sm group-hover:bg-purple-500/20 group-hover:border-purple-500/40 transition-colors">Company Profile</span>
+                   </div>
+                </div>
               </div>
-            </div>
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-white mb-2">Social Dashboard</h3>
-              <p className="text-sm text-white/60 mb-4 leading-relaxed">
-                Dasbor analitik media sosial untuk melacak metrik keterlibatan, pertumbuhan audiens, dan performa konten.
-              </p>
-              <div className="flex gap-2">
-                <span className="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs rounded-full border border-purple-500/20">Vue.js</span>
-                <span className="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs rounded-full border border-purple-500/20">Chart.js</span>
+            </a>
+
+            {/* Project 4: Inventory SMK */}
+            <a href="https://inv.smkam.sch.id" target="_blank" rel="noopener noreferrer" className="relative block rounded-[2rem] p-[1px] overflow-hidden group hover:-translate-y-2 transition-all duration-500 shadow-xl hover:shadow-[0_20px_40px_-15px_rgba(249,115,22,0.3)] min-h-[280px]">
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/50 via-transparent to-red-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative bg-[#0b1121] rounded-[2rem] overflow-hidden h-full p-6 md:p-8 flex flex-col border border-white/5 group-hover:border-white/10 transition-colors duration-500 z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-orange-500/10 via-[#0b1121]/50 to-[#0b1121]">
+                <div className="absolute -bottom-8 -right-8 text-[10rem] opacity-[0.02] group-hover:opacity-10 group-hover:-translate-y-4 group-hover:-translate-x-4 group-hover:-rotate-12 transition-all duration-700 pointer-events-none blur-[4px] group-hover:blur-none select-none">
+                   📦
+                </div>
+                <div className="relative z-10 flex-1 flex flex-col">
+                   <div className="flex items-start justify-between mb-6">
+                      <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-orange-500/10 to-red-600/10 flex items-center justify-center border border-orange-500/20 shadow-[0_0_20px_rgba(249,115,22,0.1)] group-hover:scale-110 group-hover:-rotate-6 group-hover:bg-orange-500/20 transition-all duration-500 backdrop-blur-xl">
+                         <span className="text-2xl md:text-3xl group-hover:scale-110 transition-transform duration-500">📦</span>
+                      </div>
+                      <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-orange-500/20 group-hover:border-orange-500/30 transition-colors duration-500">
+                        <svg className="w-4 h-4 text-white/30 group-hover:text-orange-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </div>
+                   </div>
+                   <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors duration-300">inv.smkam.sch.id</h3>
+                   <p className="text-slate-400 mb-6 leading-relaxed font-light text-sm max-w-[95%] flex-1">
+                    Sistem peminjaman barang studio SMK. Membantu manajemen inventaris dan pelacakan peminjaman alat di studio sekolah.
+                   </p>
+                   <div className="flex flex-wrap gap-2 mt-auto">
+                      <span className="px-3 py-1.5 bg-orange-500/10 text-orange-300 text-[10px] md:text-xs font-medium rounded-full border border-orange-500/20 backdrop-blur-sm group-hover:bg-orange-500/20 group-hover:border-orange-500/40 transition-colors">Web System</span>
+                   </div>
+                </div>
               </div>
-            </div>
-          </div>
+            </a>
 
         </div>
       </div>

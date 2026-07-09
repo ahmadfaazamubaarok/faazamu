@@ -29,7 +29,7 @@ export default function JobExperiences() {
   };
 
   return (
-    <section className="relative w-full py-32 bg-gradient-to-b from-[#0d2a45] to-[#061423] overflow-hidden flex flex-col items-center">
+    <section id="karir" className="relative w-full py-32 bg-gradient-to-b from-[#0d2a45] to-[#061423] overflow-hidden flex flex-col items-center">
       
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
@@ -38,7 +38,7 @@ export default function JobExperiences() {
         transition={{ duration: 0.8 }}
         className="z-10 mb-16 text-center"
       >
-        <h2 className="text-4xl md:text-5xl font-bold text-[#7dd3fc]">Job Experiences</h2>
+        <h2 className="text-4xl md:text-5xl font-bold text-[#7dd3fc]">Pengalaman Karir</h2>
         <div className="w-24 h-1 bg-blue-500 mx-auto mt-4 rounded-full"></div>
       </motion.div>
 

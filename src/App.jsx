@@ -1,9 +1,14 @@
 import React, { useEffect } from 'react';
 import Lenis from 'lenis';
+import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import AboutMe from './components/AboutMe';
 import JobExperiences from './components/JobExperiences';
 import ProjectsSection from './components/ProjectsSection';
+import AchievementsSection from './components/AchievementsSection';
+import LetsConnectSection from './components/LetsConnectSection';
+import AnonymousMessageSection from './components/AnonymousMessageSection';
+import Footer from './components/Footer';
 
 function App() {
   // Inisialisasi Lenis Smooth Scroll
@@ -30,10 +35,15 @@ function App() {
 
   return (
     <main className="relative w-full h-full bg-[#0b1a30]">
+      <Navbar />
       <HeroSection />
       <AboutMe />
       <JobExperiences />
       <ProjectsSection />
+      <AchievementsSection />
+      <LetsConnectSection />
+      <AnonymousMessageSection />
+      <Footer />
     </main>
   );
 }

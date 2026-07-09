@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-import bgHero from '../assets/hero/bgHero.png';
-import awan from '../assets/hero/awan.png';
-import ombakBelakang from '../assets/hero/ombakBelakang.png';
-import barokPerahu from '../assets/hero/barokPerahu.png';
-import ombakDepan from '../assets/hero/ombakDepan.png';
+import bgHero from '../assets/hero/bgHero.webp';
+import awan from '../assets/hero/awan.webp';
+import ombakBelakang from '../assets/hero/ombakBelakang.webp';
+import barokPerahu from '../assets/hero/barokPerahu.webp';
+import ombakDepan from '../assets/hero/ombakDepan.webp';
 
 export default function HeroSection() {
   const ref = useRef(null);
@@ -30,7 +30,7 @@ export default function HeroSection() {
   const textOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
-    <section ref={ref} className="relative w-full h-screen overflow-hidden bg-sky-200">
+    <section id="beranda" ref={ref} className="relative w-full h-screen overflow-hidden bg-sky-200">
       {/* 1. Background Hero */}
       <motion.div
         className="absolute inset-0 w-full h-full"
@@ -69,18 +69,18 @@ export default function HeroSection() {
           className="flex flex-col mt-20 md:mt-0 md:w-1/2 w-full text-white pointer-events-auto"
           style={{ y: textY, opacity: textOpacity }}
         >
-          <p className="text-sm md:text-lg lg:text-xl font-light tracking-widest text-[#0b1a30] drop-shadow-md">Welcome to my</p>
+          <p className="text-sm md:text-lg lg:text-xl font-light tracking-widest text-[#0b1a30] drop-shadow-md">Selamat datang di</p>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mt-2 text-[#0b1a30] drop-shadow-lg">Portofolio</h1>
           <h2 className="text-lg md:text-2xl font-bold mt-4 text-[#0b1a30] drop-shadow-md">Ahmad Faaza Mubaarok</h2>
-          <p className="text-lg md:text-2xl font-light mt-1 text-[#0b1a30] drop-shadow-md">Illustrator, UI/UX Designer, & Web Developer</p>
+          <p className="text-lg md:text-2xl font-light mt-1 text-[#0b1a30] drop-shadow-md">Ilustrator, Desainer UI/UX, & Pengembang Web</p>
           
           <div className="flex flex-col sm:flex-row gap-4 mt-8 w-full sm:w-auto">
-            <button className="px-6 py-3 bg-[#0b1a30] hover:bg-white hover:text-black text-white font-medium rounded-full transition-colors shadow-lg w-full sm:w-auto">
-              View Illustrations
-            </button>
-            <button className="px-6 py-3 bg-white hover:bg-[#0b1a30] hover:text-white text-[#0b1a30] font-medium rounded-full transition-colors shadow-lg w-full sm:w-auto">
-              View Web Projects
-            </button>
+            <a href="#karya" className="px-6 py-3 bg-[#0b1a30] hover:bg-white hover:text-black text-white font-medium rounded-full transition-colors shadow-lg w-full sm:w-auto text-center">
+              Lihat Karyaku
+            </a>
+            <a href="#sapa" className="px-6 py-3 bg-white hover:bg-[#0b1a30] hover:text-white text-[#0b1a30] font-medium rounded-full transition-colors shadow-lg w-full sm:w-auto text-center">
+              Mari Berbincang
+            </a>
           </div>
         </motion.div>
 

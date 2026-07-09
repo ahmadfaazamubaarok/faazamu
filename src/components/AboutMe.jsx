@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-import barokJatuh from '../assets/aboutMe/barokJatuh.png';
-import kertasLaptop from '../assets/aboutMe/kertasLaptop.png';
+import barokJatuh from '../assets/aboutMe/barokJatuh.webp';
+import kertasLaptop from '../assets/aboutMe/kertasLaptop.webp';
 
 const bubbleConfigs = [
   { size: 24, left: '10%', top: '20%', speed: 'slow' },
@@ -49,6 +49,7 @@ export default function AboutMe() {
 
   return (
     <section 
+      id="tentang"
       ref={ref} 
       className="relative w-full min-h-[120vh] flex items-center justify-center overflow-hidden -mt-[100px] z-30 pt-[100px]"
       style={{ background: 'linear-gradient(to bottom, transparent 0%, #28287b 100px, #0d2a45 100%)' }}
@@ -92,13 +93,13 @@ export default function AboutMe() {
           className="md:w-1/2 flex flex-col text-white w-full z-20"
           style={{ y: textY }}
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-4 text-[#7dd3fc]">About Me</h2>
-          <h3 className="text-xl md:text-2xl font-bold mb-6">Hi, my name is Ahmad Faaza Mubaarok</h3>
+          <h2 className="text-4xl md:text-6xl font-bold mb-4 text-[#7dd3fc]">Tentang Saya</h2>
+          <h3 className="text-xl md:text-2xl font-bold mb-6">Halo, aku Faazamu!</h3>
           <p className="text-base md:text-lg font-light leading-relaxed text-gray-200">
-            Aku adalah seorang illustrator, UI/UX designer, dan Web Developer. 
-            Aku memiliki pengalaman 2 tahun di bidang ilustrasi dan UI/UX design, 
-            serta 1 tahun di bidang web development. Aku memiliki passion untuk 
-            menciptakan karya yang inovatif dan berkualitas.
+            Aku adalah seorang ilustrator, UI/UX designer, dan pengembang web. 
+            Selama 2 tahun terakhir aku asyik menyelami dunia ilustrasi dan desain antarmuka, 
+            ditambah 1 tahun belakangan ikut mengutak-atik kode sebagai pengembang web. 
+            Aku sangat suka meracik ide-ide kreatif menjadi karya visual yang inovatif dan interaktif!
           </p>
         </motion.div>
 
