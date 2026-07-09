@@ -11,7 +11,7 @@ const AnonymousMessageSection = () => {
   const [loadTime, setLoadTime] = useState(0);
 
   // GANTI KEY INI DENGAN ACCESS KEY WEB3FORMS ANDA
-  const WEB3FORMS_ACCESS_KEY = "3d2812a6-82fb-46da-bc46-cb0ff45716a1"; 
+  const WEB3FORMS_ACCESS_KEY = "647d6296-9df0-4caf-bce3-8d02a99324e1"; 
 
   useEffect(() => {
     // Catat waktu kapan komponen pertama kali dimuat
