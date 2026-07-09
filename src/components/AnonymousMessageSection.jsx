@@ -32,8 +32,8 @@ const AnonymousMessageSection = () => {
     e.preventDefault();
 
     // Validasi 1: Honeypot (bot biasanya mengisi semua field, termasuk yang tersembunyi)
-    const honeypot = e.target.botcheck.value;
-    if (honeypot) {
+    const isBot = e.target.botcheck.checked;
+    if (isBot) {
       // Pura-pura sukses jika bot mengisi honeypot
       setStatus('success');
       return;
