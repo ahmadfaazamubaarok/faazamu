@@ -62,23 +62,18 @@ const AnonymousMessageSection = () => {
 
     setStatus('loading');
 
-    // Persiapkan data untuk dikirim ke Web3Forms
-    const formData = {
-      access_key: WEB3FORMS_ACCESS_KEY,
-      subject: "New Anonymous Confession/Message!",
-      message: message,
-      // Field wajib dari web3forms
-      from_name: "Anonymous User", 
-    };
+    // Persiapkan data menggunakan FormData (seringkali lebih stabil di Web3Forms)
+    const formData = new FormData();
+    formData.append("access_key", WEB3FORMS_ACCESS_KEY);
+    formData.append("subject", "New Anonymous Confession/Message!");
+    formData.append("name", "Anonymous User");
+    formData.append("email", "anonymous@faazamu.xyz"); // Web3Forms kadang butuh field email agar tidak dianggap spam
+    formData.append("message", message);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        },
-        body: JSON.stringify(formData)
+        body: formData
       });
 
       const result = await response.json();
