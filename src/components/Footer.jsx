@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 
 const Footer = () => {
+  const { t } = useLanguage();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -13,13 +15,13 @@ const Footer = () => {
         {/* Left Side: Brand & Copyright */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left">
           <div className="text-2xl font-black bg-clip-text text-transparent bg-white mb-2">
-            Faaza.
+            Faazamu
           </div>
           <p className="text-sm text-slate-400">
-            © {new Date().getFullYear()} Ahmad Faaza Mubaarok. Hak Cipta Dilindungi.
+            © {new Date().getFullYear()} {t('footer', 'copyright')}
           </p>
           <p className="text-xs text-slate-500 mt-1">
-            Dibuat dengan tantrum🗿
+            {t('footer', 'madeWith')}
           </p>
         </div>
 
@@ -31,7 +33,7 @@ const Footer = () => {
             onClick={scrollToTop}
             className="px-6 py-2 bg-slate-800 hover:bg-emerald-600 hover:text-white rounded-full text-sm font-medium transition-colors duration-300 flex items-center gap-2 border border-slate-700 hover:border-emerald-500"
           >
-            Kembali ke atas
+            {t('footer', 'backToTop')}
           </motion.button>
         </div>
 

@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 import { 
   FaPinterest, 
   FaInstagram, 
@@ -130,6 +131,7 @@ const Bubble = ({ social, index, scrollYProgress }) => {
 };
 
 const LetsConnectSection = () => {
+  const { t } = useLanguage();
   const containerRef = useRef(null);
   
   const { scrollYProgress } = useScroll({
@@ -151,7 +153,7 @@ const LetsConnectSection = () => {
           viewport={{ once: true }}
           className="text-emerald-600 font-mono tracking-widest text-sm md:text-base uppercase mb-4"
         >
-          Mari Bekerja Sama
+          {t('connect', 'title')}
         </motion.p>
         <motion.h2 
           initial={{ opacity: 0, scale: 0.9 }}
@@ -160,7 +162,7 @@ const LetsConnectSection = () => {
           transition={{ duration: 0.5, type: 'spring' }}
           className="text-5xl md:text-8xl font-black text-slate-900 tracking-tight drop-shadow-sm mb-6"
         >
-          Mari Saling Sapa!
+          {t('connect', 'title')}
         </motion.h2>
         <motion.p 
           initial={{ opacity: 0 }}
@@ -169,7 +171,7 @@ const LetsConnectSection = () => {
           transition={{ delay: 0.2 }}
           className="text-slate-500 max-w-lg mx-auto text-base md:text-lg"
         >
-          Aku selalu terbuka untuk mengobrol santai, membicarakan komisi ilustrasi, proyek web, atau kolaborasi kreatif apa pun.
+          {t('connect', 'subtitle')}
         </motion.p>
       </div>
 

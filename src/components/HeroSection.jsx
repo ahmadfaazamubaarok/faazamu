@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 
 import bgHero from '../assets/hero/bgHero.webp';
 import awan from '../assets/hero/awan.webp';
@@ -8,6 +9,7 @@ import barokPerahu from '../assets/hero/barokPerahu.webp';
 import ombakDepan from '../assets/hero/ombakDepan.webp';
 
 export default function HeroSection() {
+  const { t } = useLanguage();
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -69,17 +71,17 @@ export default function HeroSection() {
           className="flex flex-col mt-20 md:mt-0 md:w-1/2 w-full text-white pointer-events-auto"
           style={{ y: textY, opacity: textOpacity }}
         >
-          <p className="text-sm md:text-lg lg:text-xl font-light tracking-widest text-[#0b1a30] drop-shadow-md">Selamat datang di</p>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mt-2 text-[#0b1a30] drop-shadow-lg">Portofolio</h1>
-          <h2 className="text-lg md:text-2xl font-bold mt-4 text-[#0b1a30] drop-shadow-md">Ahmad Faaza Mubaarok</h2>
-          <p className="text-lg md:text-2xl font-light mt-1 text-[#0b1a30] drop-shadow-md">Ilustrator, Desainer UI/UX, & Pengembang Web</p>
+          <p className="text-sm md:text-lg lg:text-xl font-light tracking-widest text-[#0b1a30] drop-shadow-md">{t('hero', 'welcome')}</p>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mt-2 text-[#0b1a30] drop-shadow-lg">{t('hero', 'portfolio')}</h1>
+          <h2 className="text-lg md:text-2xl font-bold mt-4 text-[#0b1a30] drop-shadow-md">{t('hero', 'name')}</h2>
+          <p className="text-lg md:text-2xl font-light mt-1 text-[#0b1a30] drop-shadow-md">{t('hero', 'role')}</p>
           
           <div className="flex flex-col sm:flex-row gap-4 mt-8 w-full sm:w-auto">
             <a href="#karya" className="px-6 py-3 bg-[#0b1a30] hover:bg-white hover:text-black text-white font-medium rounded-full transition-colors shadow-lg w-full sm:w-auto text-center">
-              Lihat Karyaku
+              {t('hero', 'seeWorks')}
             </a>
             <a href="#sapa" className="px-6 py-3 bg-white hover:bg-[#0b1a30] hover:text-white text-[#0b1a30] font-medium rounded-full transition-colors shadow-lg w-full sm:w-auto text-center">
-              Mari Berbincang
+              {t('hero', 'letsTalk')}
             </a>
           </div>
         </motion.div>

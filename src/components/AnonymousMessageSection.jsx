@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaPaperPlane, FaLock, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
+import { useLanguage } from '../context/LanguageContext';
 
 const AnonymousMessageSection = () => {
+  const { t } = useLanguage();
   const [message, setMessage] = useState('');
   const [status, setStatus] = useState('idle'); // idle, loading, success, error, locked
   const [errorMessage, setErrorMessage] = useState('');
@@ -113,7 +115,7 @@ const AnonymousMessageSection = () => {
             transition={{ delay: 0.1 }}
             className="text-3xl md:text-5xl font-bold text-slate-900 mb-4 drop-shadow-sm"
           >
-            Mau bilang apa nih?
+            {t('anonymous', 'title')}
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -122,8 +124,7 @@ const AnonymousMessageSection = () => {
             transition={{ delay: 0.2 }}
             className="text-slate-600 text-sm md:text-base max-w-xl mx-auto"
           >
-            Mau confess? Kritik? Atau cuma sapaan random? 
-            Kirim di sini sepenuhnya anonim! Aku ga bakal pernah tahu siapa kamu.
+            {t('anonymous', 'subtitle')}
           </motion.p>
         </div>
 
@@ -147,8 +148,8 @@ const AnonymousMessageSection = () => {
                 className="flex flex-col items-center justify-center text-center py-10"
               >
                 <FaLock className="text-4xl text-slate-400 mb-4" />
-                <h3 className="text-xl font-bold text-slate-800 mb-2">Form Locked</h3>
-                <p className="text-slate-600">You have already sent a message recently. Please wait 24 hours before sending another one to prevent spam.</p>
+                <h3 className="text-xl font-bold text-slate-800 mb-2">{t('anonymous', 'locked')}</h3>
+                <p className="text-slate-600">{t('anonymous', 'lockedDesc')}</p>
               </motion.div>
             )}
 
@@ -163,8 +164,8 @@ const AnonymousMessageSection = () => {
                 <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mb-4">
                   <FaCheckCircle className="text-3xl text-emerald-600" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-800 mb-2">Message Sent!</h3>
-                <p className="text-slate-600">Your anonymous message is flying through the internet directly to me. Thank you!</p>
+                <h3 className="text-xl font-bold text-slate-800 mb-2">{t('anonymous', 'success')}</h3>
+                <p className="text-slate-600">{t('anonymous', 'successDesc')}</p>
               </motion.div>
             )}
 
@@ -195,7 +196,7 @@ const AnonymousMessageSection = () => {
                       setMessage(e.target.value);
                       if (status === 'error') setStatus('idle'); // Clear error on typing
                     }}
-                    placeholder="Type your secret message here..."
+                    placeholder={t('anonymous', 'placeholder')}
                     className="w-full h-40 bg-slate-50 border border-slate-200 rounded-2xl p-5 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 resize-none transition-colors shadow-inner"
                     maxLength={1000}
                     required
@@ -232,7 +233,7 @@ const AnonymousMessageSection = () => {
                   className="group relative w-full flex items-center justify-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed mt-2 shadow-lg hover:shadow-emerald-500/25 hover:scale-[1.02]"
                 >
                   <span className="relative z-10">
-                    {status === 'loading' ? 'Encrypting & Sending...' : 'Send Anonymously'}
+                    {status === 'loading' ? t('anonymous', 'sending') : t('anonymous', 'sendBtn')}
                   </span>
                   
                   {status !== 'loading' && <FaPaperPlane className="relative z-10" />}

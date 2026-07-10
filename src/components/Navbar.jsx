@@ -1,38 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 
 const navLinks = [
-  { name: 'Beranda', id: 'beranda' },
-  { name: 'Tentang', id: 'tentang' },
-  { name: 'Karir', id: 'karir' },
-  { name: 'Karya', id: 'karya' },
-  { name: 'Prestasi', id: 'prestasi' },
-  { name: 'Sapa', id: 'sapa' },
-  { name: 'Pesan', id: 'pesan' },
+  { id: 'beranda' },
+  { id: 'tentang' },
+  { id: 'karir' },
+  { id: 'karya' },
+  { id: 'prestasi' },
+  { id: 'sapa' },
+  { id: 'pesan' },
 ];
 
 const Navbar = () => {
+  const { language, toggleLanguage, t } = useLanguage();
   const [activeSection, setActiveSection] = useState('beranda');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Menandai apakah sudah di-scroll (untuk style navbar)
       if (window.scrollY > 50) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
 
-      // Deteksi section yang sedang aktif
       const sections = navLinks.map(link => document.getElementById(link.id));
       let currentActive = 'beranda';
 
       for (const section of sections) {
         if (section) {
           const rect = section.getBoundingClientRect();
-          // Jika elemen berada di separuh atas layar
           if (rect.top <= window.innerHeight / 2 && rect.bottom >= 100) {
             currentActive = section.id;
           }
@@ -42,7 +41,6 @@ const Navbar = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    // Initial check
     handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
@@ -53,14 +51,13 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
     const element = document.getElementById(id);
     if (element) {
-      // Karena kita pakai Lenis, kita bisa manfaatkan scrollIntoView
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
     <>
-      {/* Desktop & Tablet Navbar (Floating Pill) */}
+      {/* Desktop & Tablet Navbar */}
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -72,59 +69,82 @@ const Navbar = () => {
         } rounded-full`}
       >
         <div className="flex items-center justify-between px-6 py-3">
-          <div className="text-xl font-bold text-[#0b1a30]">
-            Faazamu
+          <div className="flex items-center gap-2">
+            <div className="text-xl font-bold text-[#0b1a30]">
+              Faazamu
+            </div>
           </div>
-          <ul className="flex items-center gap-1 lg:gap-2">
-            {navLinks.map((link) => (
-              <li key={link.id}>
-                <a
-                  href={`#${link.id}`}
-                  onClick={(e) => handleNavClick(e, link.id)}
-                  className={`relative px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 ${
-                    activeSection === link.id
-                      ? 'text-white'
-                      : isScrolled ? 'text-slate-700 hover:text-emerald-600' : 'text-slate-800 hover:text-emerald-700'
-                  }`}
-                >
-                  {activeSection === link.id && (
-                    <motion.div
-                      layoutId="nav-indicator"
-                      className="absolute inset-0 bg-[#0b1a30] rounded-full -z-10"
-                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                    />
-                  )}
-                  {link.name}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <div className="flex items-center gap-4 lg:gap-6">
+            <ul className="flex items-center gap-1 lg:gap-2">
+              {navLinks.map((link) => (
+                <li key={link.id}>
+                  <a
+                    href={`#${link.id}`}
+                    onClick={(e) => handleNavClick(e, link.id)}
+                    className={`relative px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 ${
+                      activeSection === link.id
+                        ? 'text-white'
+                        : isScrolled ? 'text-slate-700 hover:text-emerald-600' : 'text-slate-800 hover:text-emerald-700'
+                    }`}
+                  >
+                    {activeSection === link.id && (
+                      <motion.div
+                        layoutId="nav-indicator"
+                        className="absolute inset-0 bg-[#0b1a30] rounded-full -z-10"
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      />
+                    )}
+                    {t('nav', link.id)}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            
+            <button 
+              onClick={toggleLanguage}
+              className={`px-3 py-1 rounded-full text-xs font-bold border transition-colors ${
+                isScrolled ? 'border-slate-300 text-slate-700 hover:bg-slate-100' : 'border-slate-800 text-slate-800 hover:bg-white/20'
+              }`}
+            >
+              {language === 'en' ? 'EN' : 'ID'}
+            </button>
+          </div>
         </div>
       </motion.nav>
 
-      {/* Mobile Navbar (Burger + Dropdown) */}
+      {/* Mobile Navbar */}
       <div className="md:hidden fixed top-0 left-0 right-0 z-50 pointer-events-none">
         <div className="flex justify-between items-center p-4 pointer-events-auto">
-          <div className="text-2xl font-black text-[#0b1a30] drop-shadow-sm bg-white/80 px-4 py-2 rounded-full backdrop-blur-sm">
-            Faazamu
+          <div className="flex items-center gap-2 bg-white/80 px-4 py-2 rounded-full backdrop-blur-sm drop-shadow-sm">
+            <div className="text-2xl font-black text-[#0b1a30]">
+              Faazamu
+            </div>
           </div>
-          <button 
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="w-12 h-12 bg-white/90 backdrop-blur-md shadow-lg rounded-full flex flex-col items-center justify-center gap-1.5 border border-slate-200"
-          >
-            <motion.span 
-              animate={isMobileMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
-              className="w-6 h-0.5 bg-slate-800 rounded-full origin-center transition-all"
-            />
-            <motion.span 
-              animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
-              className="w-6 h-0.5 bg-slate-800 rounded-full transition-all"
-            />
-            <motion.span 
-              animate={isMobileMenuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
-              className="w-6 h-0.5 bg-slate-800 rounded-full origin-center transition-all"
-            />
-          </button>
+          <div className="flex items-center gap-2">
+            <button 
+              onClick={toggleLanguage}
+              className="px-3 py-1.5 bg-white/90 backdrop-blur-md shadow-lg rounded-full text-xs font-bold text-slate-800 border border-slate-200"
+            >
+              {language === 'en' ? 'EN' : 'ID'}
+            </button>
+            <button 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="w-12 h-12 bg-white/90 backdrop-blur-md shadow-lg rounded-full flex flex-col items-center justify-center gap-1.5 border border-slate-200"
+            >
+              <motion.span 
+                animate={isMobileMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+                className="w-6 h-0.5 bg-slate-800 rounded-full origin-center transition-all"
+              />
+              <motion.span 
+                animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
+                className="w-6 h-0.5 bg-slate-800 rounded-full transition-all"
+              />
+              <motion.span 
+                animate={isMobileMenuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+                className="w-6 h-0.5 bg-slate-800 rounded-full origin-center transition-all"
+              />
+            </button>
+          </div>
         </div>
 
         <AnimatePresence>
@@ -147,7 +167,7 @@ const Navbar = () => {
                           : 'text-slate-600 active:bg-slate-50'
                       }`}
                     >
-                      {link.name}
+                      {t('nav', link.id)}
                     </a>
                   </li>
                 ))}

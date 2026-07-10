@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 import Skills from './Skills';
 
 // Import images
@@ -23,6 +24,8 @@ import comic10 from '../assets/comicArworks/comic10.webp';
 
 import diegaMain from '../assets/characterDesign/diega/diegaMain.webp';
 import diegaVariant from '../assets/characterDesign/diega/diegaVariant.webp';
+import barokMain from '../assets/characterDesign/barok/barokMain.webp';
+import barokVariant from '../assets/characterDesign/barok/barokVariant.webp';
 
 const comicItems = [
   comic1, comic2, comic3, comic4, comic5, 
@@ -98,6 +101,7 @@ const ComicPanel = ({ scrollYProgress, index, imgSrc }) => {
 };
 
 const ProjectsSection = () => {
+  const { t } = useLanguage();
   const containerRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -248,10 +252,10 @@ const ProjectsSection = () => {
             {/* Judul Web Projects (Menempel di atas IDE) */}
             <div className="w-[95%] md:w-[85%] lg:w-[75%] max-w-5xl mb-4 md:mb-6 px-2">
               <p className="text-xs md:text-sm text-emerald-400 font-mono tracking-widest drop-shadow-md mb-1">
-                <span className="text-white/50">const</span> <span className="text-blue-400">section</span> <span className="text-white/50">=</span> <span className="text-emerald-300">"Jelajahi"</span>;
+                <span className="text-white/50">const</span> <span className="text-blue-400">section</span> <span className="text-white/50">=</span> <span className="text-emerald-300">"{t('projects', 'explore')}"</span>;
               </p>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white drop-shadow-lg">
-                Proyek Web
+                {t('projects', 'title')}
               </h1>
             </div>
 
@@ -352,8 +356,8 @@ const ProjectsSection = () => {
 
           {/* Judul Section (Diubah jadi putih agar terlihat di background gelap) */}
           <div className="absolute top-12 left-6 md:top-24 md:left-12 lg:left-24 z-20 flex flex-col pointer-events-none drop-shadow-2xl">
-            <p className="text-sm md:text-lg lg:text-xl font-light tracking-widest text-[#0b1a30] drop-shadow-md">Jelajahi</p>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mt-2 text-[#0b1a30] drop-shadow-lg">Karya<br/>Ilustrasi</h1>
+            <p className="text-sm md:text-lg lg:text-xl font-light tracking-widest text-[#0b1a30] drop-shadow-md">{t('projects', 'explore')}</p>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mt-2 text-[#0b1a30] drop-shadow-lg whitespace-pre-line">{t('projects', 'illustration').replace(' ', '\n')}</h1>
           </div>
 
           {/* Barok Roket Pensil */}
@@ -402,10 +406,10 @@ const ProjectsSection = () => {
         >
           {/* Judul Section Comic & Counter */}
           <div className="absolute top-12 left-6 md:top-24 md:left-12 lg:left-24 z-20 flex flex-col pointer-events-none drop-shadow-2xl">
-            <p className="text-sm md:text-lg lg:text-xl font-light tracking-widest text-white drop-shadow-md">Jelajahi</p>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mt-2 text-[#e7992d] drop-shadow-lg">Karya<br />Komik</h1>
+            <p className="text-sm md:text-lg lg:text-xl font-light tracking-widest text-white drop-shadow-md">{t('projects', 'explore')}</p>
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mt-2 text-[#e7992d] drop-shadow-lg whitespace-pre-line">{t('projects', 'comic').replace(' ', '\n')}</h1>
                <p className="text-md text-white/60 mt-6 max-w-sm">
-                  Komik ini memenangkan juara 3 tingkat Provinsi DIY di lomba PEKSIMIPROV DIY 2026.
+                  {t('projects', 'comicDesc')}
                </p>
             
             {/* Penghitung Progress Komik (Counter) */}
@@ -441,9 +445,9 @@ const ProjectsSection = () => {
             <div className="w-full h-screen flex flex-col md:flex-row items-center justify-center px-6 lg:px-24">
               <div className="md:w-1/2 flex flex-col z-20 mt-32 md:mt-0 pl-0 md:pl-12 lg:pl-32">
                 <h2 className="text-6xl md:text-7xl lg:text-9xl font-bold text-white drop-shadow-xl">Diega</h2>
-                <p className="text-xl md:text-3xl font-light text-white/80 mt-2 tracking-wide">Desain Karakter</p>
+                <p className="text-xl md:text-3xl font-light text-white/80 mt-2 tracking-wide">{t('projects', 'charDesign')}</p>
                 <p className="text-md text-white/60 mt-6 max-w-sm">
-                  Desain maskot ini memenangkan Juara 1 nasional di ajang OCEANIC MASCOT CHALLENGE 2026, yang diselenggarakan oleh HIMADEGA UNESA dengan tema "Diving into the Depths of Identity". Maskot ini menonjolkan gaya visual yang hidup, dinamis, dan memiliki identitas yang kuat.
+                  {t('projects', 'diegaDesc')}
                 </p>
               </div>
               <div className="md:w-1/2 flex flex-col items-center justify-center gap-2 md:gap-4 mt-12 md:mt-0 z-20 h-[60vh] md:h-[80vh]">
@@ -452,17 +456,17 @@ const ProjectsSection = () => {
               </div>
             </div>
 
-            {/* Karakter 2: Placeholder (Duplikat sementara) */}
+            {/* Karakter 2: Barok */}
             <div className="w-full h-screen flex flex-col md:flex-row items-center justify-center px-6 lg:px-24 bg-black/10">
               <div className="md:w-1/2 flex flex-col items-center justify-center gap-2 md:gap-4 mb-12 md:mt-0 z-20 h-[60vh] md:h-[80vh] order-2 md:order-1">
-                <img src={diegaMain} alt="Karakter 2 Placeholder" className="w-full h-[65%] md:h-[70%] object-contain opacity-10" />
-                <img src={diegaVariant} alt="Karakter 2 Placeholder" className="w-2/3 md:w-3/4 h-[35%] md:h-[30%] object-contain opacity-10" />
+                <img src={barokMain} alt="Barok Main" className="w-full h-[65%] md:h-[70%] object-contain hover:scale-105 transition-transform duration-300" />
+                <img src={barokVariant} alt="Barok Variant" className="w-2/3 md:w-3/4 h-[35%] md:h-[30%] object-contain hover:scale-105 transition-transform duration-300 opacity-90" />
               </div>
               <div className="md:w-1/2 flex flex-col z-20 order-1 md:order-2 pr-0 md:pr-12 lg:pr-32 md:text-right items-start md:items-end mt-32 md:mt-0">
-                <h2 className="text-6xl md:text-7xl lg:text-9xl font-bold text-white drop-shadow-xl">Char 02</h2>
-                <p className="text-xl md:text-3xl font-light text-white/80 mt-2 tracking-wide">Coming Soon</p>
+                <h2 className="text-6xl md:text-7xl lg:text-9xl font-bold text-white drop-shadow-xl">Barok</h2>
+                <p className="text-xl md:text-3xl font-light text-white/80 mt-2 tracking-wide">{t('projects', 'charDesign')}</p>
                 <p className="text-md text-white/60 mt-6 max-w-sm">
-                  Karakter kedua sedang dalam tahap penyempurnaan. Nanti akan segera menempati panel ini.
+                  {t('projects', 'barokDesc')}
                 </p>
               </div>
             </div>
@@ -512,7 +516,7 @@ const ProjectsSection = () => {
                    <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors duration-300">faazamu.xyz</h3>
                    
                    <p className="text-slate-400 mb-6 leading-relaxed font-light text-sm max-w-[95%] flex-1">
-                      Portfolio Website (Web Ini). Platform interaktif untuk memamerkan karya ilustrasi, desain karakter, dan proyek pengembangan web.
+                      {t('projects', 'webDesc1')}
                    </p>
                    
                    {/* Tags */}
@@ -545,7 +549,7 @@ const ProjectsSection = () => {
                    </div>
                    <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300">pmb.salpur.com</h3>
                    <p className="text-slate-400 mb-6 leading-relaxed font-light text-sm max-w-[95%] flex-1">
-                      Sistem pendaftaran siswa baru Salsabila Purworejo. Memudahkan proses administrasi dan pendaftaran calon siswa secara online.
+                      {t('projects', 'webDesc2')}
                    </p>
                    <div className="flex flex-wrap gap-2 mt-auto">
                       <span className="px-3 py-1.5 bg-blue-500/10 text-blue-300 text-[10px] md:text-xs font-medium rounded-full border border-blue-500/20 backdrop-blur-sm group-hover:bg-blue-500/20 group-hover:border-blue-500/40 transition-colors">Web System</span>
@@ -574,7 +578,7 @@ const ProjectsSection = () => {
                    </div>
                    <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300">ppasm.com</h3>
                    <p className="text-slate-400 mb-6 leading-relaxed font-light text-sm max-w-[95%] flex-1">
-                      Website resmi Pesantren Assalafiyyah Mlangi. Menampilkan profil, kegiatan, dan informasi seputar pondok pesantren.
+                      {t('projects', 'webDesc3')}
                    </p>
                    <div className="flex flex-wrap gap-2 mt-auto">
                       <span className="px-3 py-1.5 bg-purple-500/10 text-purple-300 text-[10px] md:text-xs font-medium rounded-full border border-purple-500/20 backdrop-blur-sm group-hover:bg-purple-500/20 group-hover:border-purple-500/40 transition-colors">Company Profile</span>
@@ -603,7 +607,7 @@ const ProjectsSection = () => {
                    </div>
                    <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors duration-300">inv.smkam.sch.id</h3>
                    <p className="text-slate-400 mb-6 leading-relaxed font-light text-sm max-w-[95%] flex-1">
-                    Sistem peminjaman barang studio SMK. Membantu manajemen inventaris dan pelacakan peminjaman alat di studio sekolah.
+                    {t('projects', 'webDesc4')}
                    </p>
                    <div className="flex flex-wrap gap-2 mt-auto">
                       <span className="px-3 py-1.5 bg-orange-500/10 text-orange-300 text-[10px] md:text-xs font-medium rounded-full border border-orange-500/20 backdrop-blur-sm group-hover:bg-orange-500/20 group-hover:border-orange-500/40 transition-colors">Web System</span>

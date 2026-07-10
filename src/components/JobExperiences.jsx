@@ -1,17 +1,18 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-
-const experiences = [
-  { id: 1, role: 'Freelance Ilustrasi digital', year: '2025-sekarang' },
-  { id: 2, role: 'Freelance Web Developer', year: '2025-sekarang' },
-  { id: 3, role: 'Guru Pemrograman Web SMK', year: '2025-sekarang' },
-  { id: 4, role: 'Guru UI/UX SMK', year: '2025' },
-  { id: 5, role: 'Content Creator (artist) Instagram', year: '2024-sekarang' },
-];
+import { useLanguage } from '../context/LanguageContext';
 
 export default function JobExperiences() {
+  const { t } = useLanguage();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const experiences = [
+    { id: 1, role: t('career', 'exp1'), year: t('career', 'present') },
+    { id: 2, role: t('career', 'exp2'), year: t('career', 'present') },
+    { id: 3, role: t('career', 'exp3'), year: t('career', 'present') },
+    { id: 4, role: t('career', 'exp4'), year: t('career', 'present24') },
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -38,7 +39,7 @@ export default function JobExperiences() {
         transition={{ duration: 0.8 }}
         className="z-10 mb-16 text-center"
       >
-        <h2 className="text-4xl md:text-5xl font-bold text-[#7dd3fc]">Pengalaman Karir</h2>
+        <h2 className="text-4xl md:text-5xl font-bold text-[#7dd3fc]">{t('career', 'title')}</h2>
         <div className="w-24 h-1 bg-blue-500 mx-auto mt-4 rounded-full"></div>
       </motion.div>
 

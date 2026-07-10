@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 
 import barokJatuh from '../assets/aboutMe/barokJatuh.webp';
 import kertasLaptop from '../assets/aboutMe/kertasLaptop.webp';
@@ -18,6 +19,7 @@ const bubbleConfigs = [
 ];
 
 export default function AboutMe() {
+  const { t } = useLanguage();
   const ref = useRef(null);
   
   // Track scroll position within this section
@@ -93,13 +95,10 @@ export default function AboutMe() {
           className="md:w-1/2 flex flex-col text-white w-full z-20"
           style={{ y: textY }}
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-4 text-[#7dd3fc]">Tentang Saya</h2>
-          <h3 className="text-xl md:text-2xl font-bold mb-6">Halo, aku Faazamu!</h3>
+          <h2 className="text-4xl md:text-6xl font-bold mb-4 text-[#7dd3fc]">{t('about', 'title')}</h2>
+          <h3 className="text-xl md:text-2xl font-bold mb-6">{t('about', 'greeting')}</h3>
           <p className="text-base md:text-lg font-light leading-relaxed text-gray-200">
-            Aku adalah seorang ilustrator, UI/UX designer, dan pengembang web. 
-            Selama 2 tahun terakhir aku asyik menyelami dunia ilustrasi dan desain antarmuka, 
-            ditambah 1 tahun belakangan ikut mengutak-atik kode sebagai pengembang web. 
-            Aku sangat suka meracik ide-ide kreatif menjadi karya visual yang inovatif dan interaktif!
+            {t('about', 'description')}
           </p>
         </motion.div>
 

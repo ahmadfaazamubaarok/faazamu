@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 
 // Import Assets
 import juaraMaskot from '../assets/achievements/certificates/juara1LombaMaskot.webp';
@@ -7,6 +8,7 @@ import juaraKomik from '../assets/achievements/certificates/juara3LombaKomik.web
 import barokTrophy from '../assets/achievements/achivement.webp';
 
 const AchievementsSection = () => {
+  const { t } = useLanguage();
   const containerRef = useRef(null);
   const [isRevealed, setIsRevealed] = useState(false);
   
@@ -49,7 +51,7 @@ const AchievementsSection = () => {
             {/* Header */}
             <div className="text-center mb-6 md:mb-10 shrink-0">
                <p className="text-emerald-600 font-mono tracking-widest text-[10px] md:text-sm uppercase mb-1">Jejak Langkah</p>
-               <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold text-slate-900 drop-shadow-sm">Prestasi</h2>
+               <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold text-slate-900 drop-shadow-sm">{t('achievements', 'title')}</h2>
             </div>
 
             {/* Achievements Display */}
@@ -78,11 +80,8 @@ const AchievementsSection = () => {
                   <div className="relative bg-white p-3 md:p-5 rounded-2xl border border-slate-200 shadow-xl overflow-hidden hover:scale-[1.02] transition-transform duration-500 hover:rotate-1">
                      <img src={juaraMaskot} alt="Juara 1 Lomba Maskot" className="w-full h-auto rounded-lg shadow-sm border border-slate-100" />
                      <div className="mt-2 md:mt-4 px-1 text-center md:text-left">
-                        <h3 className="text-sm md:text-xl font-bold text-slate-800 mb-0 md:mb-1">Juara 1</h3>
-                        <p className="text-amber-600 text-[10px] md:text-xs font-bold tracking-wide mb-1 md:mb-2 leading-tight">OCEANIC MASCOT CHALLENGE</p>
-                        <p className="text-slate-500 text-xs leading-relaxed hidden lg:block">
-                           Penghargaan atas karya desain maskot "Diega", yang mengangkat tema identitas dan dinamika laut.
-                        </p>
+                        <h3 className="text-sm md:text-xl font-bold text-slate-800 mb-0 md:mb-1">{t('achievements', 'ach1')}</h3>
+                        <p className="text-amber-600 text-[10px] md:text-xs font-bold tracking-wide mb-1 md:mb-2 leading-tight">{t('achievements', 'desc1')}</p>
                      </div>
                   </div>
                </motion.div>
@@ -99,11 +98,8 @@ const AchievementsSection = () => {
                   <div className="relative bg-white p-3 md:p-5 rounded-2xl border border-slate-200 shadow-xl overflow-hidden hover:scale-[1.02] transition-transform duration-500 hover:-rotate-1">
                      <img src={juaraKomik} alt="Juara 3 Lomba Komik" className="w-full h-auto rounded-lg shadow-sm border border-slate-100" />
                      <div className="mt-2 md:mt-4 px-1 text-center md:text-left">
-                        <h3 className="text-sm md:text-xl font-bold text-slate-800 mb-0 md:mb-1">Juara 3</h3>
-                        <p className="text-purple-600 text-[10px] md:text-xs font-bold tracking-wide mb-1 md:mb-2 leading-tight">PEKSIMIPROV DIY 2026</p>
-                        <p className="text-slate-500 text-xs leading-relaxed hidden lg:block">
-                           Penghargaan kategori Komik Strip yang dinilai berdasarkan orisinalitas, eksekusi cerita, dan gaya visual yang unik.
-                        </p>
+                        <h3 className="text-sm md:text-xl font-bold text-slate-800 mb-0 md:mb-1">{t('achievements', 'ach2')}</h3>
+                        <p className="text-purple-600 text-[10px] md:text-xs font-bold tracking-wide mb-1 md:mb-2 leading-tight">{t('achievements', 'desc2')}</p>
                      </div>
                   </div>
                </motion.div>
