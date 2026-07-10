@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import Skills from './Skills';
+import ImageModal from './ImageModal';
 
 // Import images
 import bgIllustration from '../assets/illustrationArtworks/bgIllustrationArtworks.webp';
@@ -111,6 +112,7 @@ const ComicPanel = ({ scrollYProgress, index, imgSrc }) => {
 const ProjectsSection = () => {
   const { t } = useLanguage();
   const containerRef = useRef(null);
+  const [modalImage, setModalImage] = useState(null);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -372,7 +374,7 @@ const ProjectsSection = () => {
             <motion.img 
               src={barokRoket} 
               alt="Barok Roket Pensil" 
-              className="w-48 md:w-80 lg:w-96 object-contain drop-shadow-2xl" 
+              className="w-64 sm:w-72 md:w-80 lg:w-96 object-contain drop-shadow-2xl" 
               animate={{ y: [-15, 15, -15] }}
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
             />
@@ -390,6 +392,7 @@ const ProjectsSection = () => {
                 {galleryItems.map((imgSrc, idx) => (
                   <div 
                     key={idx} 
+                    onClick={() => setModalImage(imgSrc)}
                     className="flex-shrink-0 h-[40vh] md:h-[50vh] lg:h-[60vh] aspect-[4/5] bg-black/20 rounded-xl overflow-hidden border border-white/10 shadow-2xl group hover:-translate-y-2 transition-transform duration-300 pointer-events-auto cursor-pointer"
                   >
                     <img loading="lazy" 
@@ -465,16 +468,16 @@ const ProjectsSection = () => {
                 </p>
               </div>
               <div className="md:w-1/2 flex flex-col items-center justify-center gap-2 md:gap-4 mt-12 md:mt-0 z-20 h-[60vh] md:h-[80vh]">
-                <img loading="lazy" src={diegaMain} alt="Diega Main" className="w-full h-[65%] md:h-[70%] object-contain hover:scale-105 transition-transform duration-300" />
-                <img loading="lazy" src={diegaVariant} alt="Diega Variant" className="w-2/3 md:w-3/4 h-[35%] md:h-[30%] object-contain hover:scale-105 transition-transform duration-300 opacity-90" />
+                <img loading="lazy" src={diegaMain} alt="Diega Main" onClick={() => setModalImage(diegaMain)} className="w-full h-[65%] md:h-[70%] object-contain hover:scale-105 transition-transform duration-300 cursor-pointer" />
+                <img loading="lazy" src={diegaVariant} alt="Diega Variant" onClick={() => setModalImage(diegaVariant)} className="w-2/3 md:w-3/4 h-[35%] md:h-[30%] object-contain hover:scale-105 transition-transform duration-300 opacity-90 cursor-pointer" />
               </div>
             </div>
 
             {/* Karakter 2: Barok */}
             <div className="w-full h-screen flex flex-col md:flex-row items-center justify-center px-6 lg:px-24 bg-black/10">
               <div className="md:w-1/2 flex flex-col items-center justify-center gap-2 md:gap-4 mb-12 md:mt-0 z-20 h-[60vh] md:h-[80vh] order-2 md:order-1">
-                <img loading="lazy" src={barokMain} alt="Barok Main" className="w-full h-[65%] md:h-[70%] object-contain hover:scale-105 transition-transform duration-300" />
-                <img loading="lazy" src={barokVariant} alt="Barok Variant" className="w-2/3 md:w-3/4 h-[35%] md:h-[30%] object-contain hover:scale-105 transition-transform duration-300 opacity-90" />
+                <img loading="lazy" src={barokMain} alt="Barok Main" onClick={() => setModalImage(barokMain)} className="w-full h-[65%] md:h-[70%] object-contain hover:scale-105 transition-transform duration-300 cursor-pointer" />
+                <img loading="lazy" src={barokVariant} alt="Barok Variant" onClick={() => setModalImage(barokVariant)} className="w-2/3 md:w-3/4 h-[35%] md:h-[30%] object-contain hover:scale-105 transition-transform duration-300 opacity-90 cursor-pointer" />
               </div>
               <div className="md:w-1/2 flex flex-col z-20 order-1 md:order-2 pr-0 md:pr-12 lg:pr-32 md:text-right items-start md:items-end mt-32 md:mt-0">
                 <h2 className="text-6xl md:text-7xl lg:text-9xl font-bold text-white drop-shadow-xl">Barok</h2>
@@ -633,6 +636,12 @@ const ProjectsSection = () => {
         </div>
       </div>
     </section>
+    
+    <ImageModal 
+      isOpen={!!modalImage} 
+      imageSrc={modalImage} 
+      onClose={() => setModalImage(null)} 
+    />
     </>
   );
 };
