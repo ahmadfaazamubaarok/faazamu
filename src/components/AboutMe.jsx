@@ -109,10 +109,10 @@ export default function AboutMe() {
             className="absolute inset-0 flex items-center justify-center z-10"
             style={{ y: barokY }}
           >
-            <img 
+            <img loading="lazy" 
               src={barokJatuh} 
               alt="Barok Jatuh" 
-              className="w-3/4 md:w-4/5 object-contain opacity-90 drop-shadow-2xl"
+              className="w-full scale-125 mt-10 md:mt-0 md:scale-100 md:w-4/5 object-contain opacity-90 drop-shadow-2xl"
             />
           </motion.div>
 
@@ -121,10 +121,10 @@ export default function AboutMe() {
             className="absolute inset-0 flex items-center justify-center z-20"
             style={{ y: laptopY }}
           >
-            <img 
+            <img loading="lazy" 
               src={kertasLaptop} 
               alt="Kertas Laptop" 
-              className="w-3/4 md:w-4/5 object-contain ml-8 mt-12 drop-shadow-2xl"
+              className="w-full scale-125 mt-16 md:mt-12 md:scale-100 md:w-4/5 object-contain ml-4 md:ml-8 drop-shadow-2xl"
             />
           </motion.div>
         </div>

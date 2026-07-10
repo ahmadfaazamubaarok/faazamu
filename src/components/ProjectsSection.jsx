@@ -11,6 +11,14 @@ import barokRoket from '../assets/illustrationArtworks/barokRoketPensil.webp';
 import img1 from '../assets/illustrationArtworks/illustrations/illustration1.webp';
 import img2 from '../assets/illustrationArtworks/illustrations/illustration2.webp';
 import img3 from '../assets/illustrationArtworks/illustrations/illustration3.webp';
+import img4 from '../assets/illustrationArtworks/illustrations/illustration4.webp';
+import img5 from '../assets/illustrationArtworks/illustrations/illustration5.webp';
+import img6 from '../assets/illustrationArtworks/illustrations/illustration6.webp';
+import img7 from '../assets/illustrationArtworks/illustrations/illustration7.webp';
+import img8 from '../assets/illustrationArtworks/illustrations/illustration8.webp';
+import img9 from '../assets/illustrationArtworks/illustrations/illustration9.webp';
+import img10 from '../assets/illustrationArtworks/illustrations/illustration10.webp';
+import img11 from '../assets/illustrationArtworks/illustrations/illustration11.webp';
 import comic1 from '../assets/comicArworks/comic1.webp';
 import comic2 from '../assets/comicArworks/comic2.webp';
 import comic3 from '../assets/comicArworks/comic3.webp';
@@ -89,12 +97,12 @@ const ComicPanel = ({ scrollYProgress, index, imgSrc }) => {
   return (
     <motion.div 
       style={{ y, rotate }}
-      className="absolute right-4 md:right-16 lg:right-32 top-1/2 -translate-y-1/2 z-30"
+      className="absolute left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-16 lg:right-32 top-[60%] md:top-1/2 -translate-y-1/2 z-30"
     >
-      <img 
+      <img loading="lazy" 
         src={imgSrc} 
         alt={`Comic Panel ${index + 1}`} 
-        className="w-64 md:w-80 lg:w-96 rounded-xl shadow-2xl border-4 border-white/10" 
+        className="w-[85vw] max-w-sm md:w-80 lg:w-96 rounded-xl shadow-2xl border-4 border-white/10" 
       />
     </motion.div>
   );
@@ -112,7 +120,7 @@ const ProjectsSection = () => {
   // 1. Animasi Masking (Lingkaran) untuk Illustration Artworks
   const clipPath = useTransform(
     scrollYProgress,
-    [0, 0.015, 0.05, 0.08, 1],
+    [0, 0.015, 0.05, 0.07, 1],
     [
       "circle(0px at 50% 100%)", 
       "circle(50px at 50% 100%)", 
@@ -125,28 +133,28 @@ const ProjectsSection = () => {
   // 2. Animasi Barok Roket Pensil
   const barokY = useTransform(
     scrollYProgress,
-    [0.04, 0.08, 1],
+    [0.03, 0.06, 1],
     ["100vh", "-5vh", "-5vh"]
   );
 
   // 3. Animasi Galeri Artwork Muncul Ke Atas
   const galleryY = useTransform(
     scrollYProgress,
-    [0.08, 0.12, 1],
+    [0.06, 0.09, 1],
     ["100vh", "0vh", "0vh"]
   );
 
   // 4. Animasi Galeri Horizontal Scroll
   const galleryX = useTransform(
     scrollYProgress,
-    [0.12, 0.22, 1],
+    [0.09, 0.19, 1],
     ["0%", "-85%", "-85%"] 
   );
 
   // 5. Animasi Masking (Lingkaran) untuk Comic Artworks
   const clipPathComic = useTransform(
     scrollYProgress,
-    [0, 0.22, 0.24, 0.27, 1],
+    [0, 0.19, 0.21, 0.24, 1],
     [
       "circle(0px at 50% 100%)", 
       "circle(0px at 50% 100%)", 
@@ -157,10 +165,9 @@ const ProjectsSection = () => {
   );
 
   // 6. Animasi Masking (Horizontal dari Bawah) untuk Character Design
-  // Jeda setelah komik (0.52), sweep mulai 0.52 ke 0.55
   const clipPathCharacter = useTransform(
     scrollYProgress,
-    [0, 0.52, 0.55, 1],
+    [0, 0.49, 0.52, 1],
     [
       "inset(100% 0% 0% 0%)",
       "inset(100% 0% 0% 0%)",
@@ -172,15 +179,14 @@ const ProjectsSection = () => {
   // 7. Animasi Scroll Vertikal untuk Konten Character Design
   const charScrollY = useTransform(
     scrollYProgress,
-    [0, 0.58, 0.68],
+    [0, 0.54, 0.62],
     ["0vh", "0vh", "-100vh"]
   );
 
   // 8. Animasi Menutup Semua Layer Artwork (Shrinking Circle)
-  // Setelah Character Design selesai di 0.68, tunggu sampai 0.70 lalu tutup lingkaran
   const closingCircle = useTransform(
     scrollYProgress,
-    [0, 0.70, 0.72, 0.78, 1],
+    [0, 0.64, 0.66, 0.72, 1],
     [
       "circle(150vw at 50% 50%)",
       "circle(150vw at 50% 50%)",
@@ -191,10 +197,9 @@ const ProjectsSection = () => {
   );
 
   // 9. Animasi IDE Code Editor (Muncul dari Bawah)
-  // Muncul bersamaan dengan menyusutnya lingkaran (selesai di 0.78)
   const ideY = useTransform(
     scrollYProgress,
-    [0.72, 0.78, 1],
+    [0.66, 0.72, 1],
     ["100vh", "0vh", "0vh"]
   );
 
@@ -208,10 +213,10 @@ const ProjectsSection = () => {
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     // 1. Comic Panel Counter
     let count = 0;
-    if (latest >= 0.27 && latest <= 0.55) {
-      count = Math.floor((latest - 0.27) / 0.025) + 1;
+    if (latest >= 0.24 && latest <= 0.49) {
+      count = Math.floor((latest - 0.24) / 0.025) + 1;
       if (count > 10) count = 10;
-    } else if (latest > 0.55) {
+    } else if (latest > 0.49) {
       count = 10;
     }
     
@@ -219,10 +224,9 @@ const ProjectsSection = () => {
       setCurrentPanel(count);
     }
 
-    // 2. IDE Code Typing Effect (Mulai di 0.78 setelah IDE muncul penuh)
-    if (latest >= 0.78) {
-      // Mengubah pembagi menjadi 0.22 agar animasi mengetik pas selesai di 1.00 (tidak ada sisa scroll kosong)
-      const progress = (latest - 0.78) / 0.22;
+    // 2. IDE Code Typing Effect (Mulai di 0.72 setelah IDE muncul penuh)
+    if (latest >= 0.72) {
+      const progress = (latest - 0.72) / 0.28;
       const chars = Math.floor(progress * fullCodeLength);
       setCodeChars(Math.min(chars, fullCodeLength));
     } else {
@@ -231,13 +235,13 @@ const ProjectsSection = () => {
   });
 
   const galleryItems = [
-    img1, img2, img3, img1, img2, img3, img1, img2, img3, img1, img2, img3
+    img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11
   ];
 
   return (
     <>
-    {/* Container diperpanjang jadi 3000vh untuk mengakomodasi penutup lingkaran dan Web Projects */}
-    <section id="karya" ref={containerRef} className="relative w-full h-[3000vh]">
+    {/* Container dikurangi jadi 2200vh agar scroll keseluruhan lebih cepat dan responsif (tanpa wasting scroll) */}
+    <section id="karya" ref={containerRef} className="relative w-full h-[2200vh]">
       
       {/* Sticky container */}
         <div className="sticky top-0 w-full h-screen overflow-hidden bg-black">
@@ -354,18 +358,24 @@ const ProjectsSection = () => {
             transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
           />
 
-          {/* Judul Section (Diubah jadi putih agar terlihat di background gelap) */}
+          {/* Judul Section */}
           <div className="absolute top-12 left-6 md:top-24 md:left-12 lg:left-24 z-20 flex flex-col pointer-events-none drop-shadow-2xl">
-            <p className="text-sm md:text-lg lg:text-xl font-light tracking-widest text-[#0b1a30] drop-shadow-md">{t('projects', 'explore')}</p>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mt-2 text-[#0b1a30] drop-shadow-lg whitespace-pre-line">{t('projects', 'illustration').replace(' ', '\n')}</h1>
+            <p className="text-sm md:text-lg lg:text-xl font-light tracking-widest text-[#0b1121] drop-shadow-md">{t('projects', 'explore')}</p>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mt-2 text-[#0b1121] drop-shadow-lg">{t('projects', 'illustration')}</h1>
           </div>
 
           {/* Barok Roket Pensil */}
           <motion.div
             style={{ y: barokY }}
-            className="absolute right-4 md:right-16 lg:right-32 top-[15%] md:top-[10%] z-20"
+            className="absolute right-4 md:right-16 lg:right-32 bottom-[30vh] md:bottom-auto md:top-[10%] z-20"
           >
-            <img src={barokRoket} alt="Barok Roket Pensil" className="w-56 md:w-80 lg:w-96 object-contain drop-shadow-2xl" />
+            <motion.img 
+              src={barokRoket} 
+              alt="Barok Roket Pensil" 
+              className="w-48 md:w-80 lg:w-96 object-contain drop-shadow-2xl" 
+              animate={{ y: [-15, 15, -15] }}
+              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+            />
           </motion.div>
 
           {/* Galeri Artwork */}
@@ -373,19 +383,23 @@ const ProjectsSection = () => {
             style={{ y: galleryY }}
             className="absolute bottom-8 md:bottom-12 left-0 w-full z-20 flex"
           >
-            <motion.div 
-              style={{ x: galleryX }}
-              className="flex gap-6 px-6 md:px-12 lg:px-24 w-max"
-            >
-              {galleryItems.map((imgSrc, idx) => (
-                <div 
-                  key={idx} 
-                  className="flex-none w-60 h-60 md:w-80 md:h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 hover:-translate-y-4 transition-transform duration-300"
-                >
-                  <img src={imgSrc} alt={`Artwork ${idx + 1}`} className="w-full h-full object-cover" />
-                </div>
-              ))}
-            </motion.div>
+              <motion.div 
+                style={{ x: galleryX }}
+                className="flex flex-row items-center gap-4 md:gap-8 px-[100vw] h-full"
+              >
+                {galleryItems.map((imgSrc, idx) => (
+                  <div 
+                    key={idx} 
+                    className="flex-shrink-0 h-[40vh] md:h-[50vh] lg:h-[60vh] aspect-[4/5] bg-black/20 rounded-xl overflow-hidden border border-white/10 shadow-2xl group hover:-translate-y-2 transition-transform duration-300 pointer-events-auto cursor-pointer"
+                  >
+                    <img loading="lazy" 
+                      src={imgSrc} 
+                      alt={`Illustration ${idx+1}`} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                ))}
+              </motion.div>
           </motion.div>
 
           {/* Awan Depan */}
@@ -451,16 +465,16 @@ const ProjectsSection = () => {
                 </p>
               </div>
               <div className="md:w-1/2 flex flex-col items-center justify-center gap-2 md:gap-4 mt-12 md:mt-0 z-20 h-[60vh] md:h-[80vh]">
-                <img src={diegaMain} alt="Diega Main" className="w-full h-[65%] md:h-[70%] object-contain hover:scale-105 transition-transform duration-300" />
-                <img src={diegaVariant} alt="Diega Variant" className="w-2/3 md:w-3/4 h-[35%] md:h-[30%] object-contain hover:scale-105 transition-transform duration-300 opacity-90" />
+                <img loading="lazy" src={diegaMain} alt="Diega Main" className="w-full h-[65%] md:h-[70%] object-contain hover:scale-105 transition-transform duration-300" />
+                <img loading="lazy" src={diegaVariant} alt="Diega Variant" className="w-2/3 md:w-3/4 h-[35%] md:h-[30%] object-contain hover:scale-105 transition-transform duration-300 opacity-90" />
               </div>
             </div>
 
             {/* Karakter 2: Barok */}
             <div className="w-full h-screen flex flex-col md:flex-row items-center justify-center px-6 lg:px-24 bg-black/10">
               <div className="md:w-1/2 flex flex-col items-center justify-center gap-2 md:gap-4 mb-12 md:mt-0 z-20 h-[60vh] md:h-[80vh] order-2 md:order-1">
-                <img src={barokMain} alt="Barok Main" className="w-full h-[65%] md:h-[70%] object-contain hover:scale-105 transition-transform duration-300" />
-                <img src={barokVariant} alt="Barok Variant" className="w-2/3 md:w-3/4 h-[35%] md:h-[30%] object-contain hover:scale-105 transition-transform duration-300 opacity-90" />
+                <img loading="lazy" src={barokMain} alt="Barok Main" className="w-full h-[65%] md:h-[70%] object-contain hover:scale-105 transition-transform duration-300" />
+                <img loading="lazy" src={barokVariant} alt="Barok Variant" className="w-2/3 md:w-3/4 h-[35%] md:h-[30%] object-contain hover:scale-105 transition-transform duration-300 opacity-90" />
               </div>
               <div className="md:w-1/2 flex flex-col z-20 order-1 md:order-2 pr-0 md:pr-12 lg:pr-32 md:text-right items-start md:items-end mt-32 md:mt-0">
                 <h2 className="text-6xl md:text-7xl lg:text-9xl font-bold text-white drop-shadow-xl">Barok</h2>
@@ -516,7 +530,7 @@ const ProjectsSection = () => {
                    <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors duration-300">faazamu.xyz</h3>
                    
                    <p className="text-slate-400 mb-6 leading-relaxed font-light text-sm max-w-[95%] flex-1">
-                      {t('projects', 'webDesc1')}
+                      Portfolio Website (Web Ini). Platform interaktif untuk memamerkan karya ilustrasi, desain karakter, dan proyek pengembangan web.
                    </p>
                    
                    {/* Tags */}
@@ -549,7 +563,7 @@ const ProjectsSection = () => {
                    </div>
                    <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300">pmb.salpur.com</h3>
                    <p className="text-slate-400 mb-6 leading-relaxed font-light text-sm max-w-[95%] flex-1">
-                      {t('projects', 'webDesc2')}
+                      Sistem pendaftaran siswa baru Salsabila Purworejo. Memudahkan proses administrasi dan pendaftaran calon siswa secara online.
                    </p>
                    <div className="flex flex-wrap gap-2 mt-auto">
                       <span className="px-3 py-1.5 bg-blue-500/10 text-blue-300 text-[10px] md:text-xs font-medium rounded-full border border-blue-500/20 backdrop-blur-sm group-hover:bg-blue-500/20 group-hover:border-blue-500/40 transition-colors">Web System</span>
@@ -578,7 +592,7 @@ const ProjectsSection = () => {
                    </div>
                    <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300">ppasm.com</h3>
                    <p className="text-slate-400 mb-6 leading-relaxed font-light text-sm max-w-[95%] flex-1">
-                      {t('projects', 'webDesc3')}
+                      Website resmi Pesantren Assalafiyyah Mlangi. Menampilkan profil, kegiatan, dan informasi seputar pondok pesantren.
                    </p>
                    <div className="flex flex-wrap gap-2 mt-auto">
                       <span className="px-3 py-1.5 bg-purple-500/10 text-purple-300 text-[10px] md:text-xs font-medium rounded-full border border-purple-500/20 backdrop-blur-sm group-hover:bg-purple-500/20 group-hover:border-purple-500/40 transition-colors">Company Profile</span>
@@ -607,7 +621,7 @@ const ProjectsSection = () => {
                    </div>
                    <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors duration-300">inv.smkam.sch.id</h3>
                    <p className="text-slate-400 mb-6 leading-relaxed font-light text-sm max-w-[95%] flex-1">
-                    {t('projects', 'webDesc4')}
+                    Sistem peminjaman barang studio SMK. Membantu manajemen inventaris dan pelacakan peminjaman alat di studio sekolah.
                    </p>
                    <div className="flex flex-wrap gap-2 mt-auto">
                       <span className="px-3 py-1.5 bg-orange-500/10 text-orange-300 text-[10px] md:text-xs font-medium rounded-full border border-orange-500/20 backdrop-blur-sm group-hover:bg-orange-500/20 group-hover:border-orange-500/40 transition-colors">Web System</span>

@@ -38,7 +38,7 @@ export default function HeroSection() {
         className="absolute inset-0 w-full h-full"
         style={{ y: bgY }}
       >
-        <img src={bgHero} alt="Background" className="w-full h-full object-cover object-bottom" />
+        <img loading="lazy" src={bgHero} alt="Background" className="w-full h-full object-cover object-bottom" />
       </motion.div>
 
       {/* 2. Awan */}
@@ -46,7 +46,7 @@ export default function HeroSection() {
         className="absolute inset-0 w-full h-full"
         style={{ y: awanY }}
       >
-        <img src={awan} alt="Awan" className="w-full h-full object-cover object-top" />
+        <img loading="lazy" src={awan} alt="Awan" className="w-full h-full object-cover object-top" />
       </motion.div>
 
       {/* 3. Ombak Belakang */}
@@ -88,13 +88,13 @@ export default function HeroSection() {
 
         {/* 4. Barok Perahu */}
         <motion.div 
-          className="w-full md:w-1/2 flex justify-center md:justify-end mt-4 md:mt-0 h-[40vh] md:h-auto items-start md:items-center relative mb-[20vh] md:mb-0"
+          className="w-full md:w-1/2 flex justify-center md:justify-end mt-auto md:mt-0 h-[45vh] md:h-auto items-end md:items-center relative md:mb-0 z-0"
           style={{ y: barokY }}
         >
           <motion.img 
             src={barokPerahu} 
             alt="Barok Perahu" 
-            className="w-4/5 md:w-full max-w-[600px] object-contain drop-shadow-2xl origin-bottom" 
+            className="w-full md:w-full max-w-[500px] md:max-w-[600px] scale-[1.35] translate-y-6 md:scale-100 md:translate-y-0 object-contain drop-shadow-2xl origin-bottom" 
             animate={{ 
               y: [-10, 10, -10],
               rotate: [-2, 2, -2]
