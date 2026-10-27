@@ -40,19 +40,26 @@ export const translations = {
       charDesign: 'Character Design',
       diegaDesc: 'This mascot design won 1st place nationally at the OCEANIC MASCOT CHALLENGE 2026, held by HIMADEGA UNESA with the theme "Diving into the Depths of Identity". The mascot features a vibrant, dynamic visual style and strong identity.',
       barokDesc: 'Barok is the main persona character I use in various illustrations and comics. The design reflects a creative and imaginative style that represents me as an artist.',
-      webDesc1: 'Portfolio Website. An interactive platform to showcase illustrations, character designs, and web development projects.',
-      webDesc2: 'Salsabila Purworejo new student admission system. Facilitates the administration process and online student registration.',
+      webName1: 'Faazamu Portfolio',
+      webDesc1: 'Personal portfolio website. An interactive platform to showcase illustrations, character designs, and web development projects.',
+      webName2: 'Salsabila Purworejo',
+      webDesc2: 'Main school website & publication, school academic system (salpur.com), and online student admission system (pmb.salpur.com).',
+      webName3: 'Pesantren Assalafiyyah Mlangi',
       webDesc3: 'Official website of Assalafiyyah Mlangi Islamic Boarding School. Displays profiles, activities, and information about the boarding school.',
+      webName4: 'SMK Studio Inventory',
       webDesc4: 'SMK studio equipment borrowing system. Helps with inventory management and tracking equipment loans in the school studio.'
     },
     achievements: {
       title: 'Achievements & Awards',
       ach1: '1st Place National Mascot Design',
       desc1: 'OCEANIC MASCOT CHALLENGE 2026',
+      detail1: 'Award for the mascot design "Diega", which raised the theme of maritime identity and dynamics.',
       ach2: '3rd Place Provincial Comic Strip',
       desc2: 'PEKSIMIPROV DIY 2026',
-      ach3: '2nd Place National Web Design',
-      desc3: 'LKS SMK 2025' // Just an example, I'll need to check the actual component later
+      detail2: 'Comic strip category award evaluated based on originality, story execution, and unique visual style.',
+      ach3: '2nd Consolation Prize National Web Development',
+      desc3: 'HMJTI UIN Walisongo Semarang',
+      detail3: 'National Web Development competition award organized by HMJTI UIN Walisongo Semarang.'
     },
     connect: {
       title: 'Let\'s Connect!',
@@ -121,19 +128,26 @@ export const translations = {
       charDesign: 'Desain Karakter',
       diegaDesc: 'Desain maskot ini memenangkan Juara 1 nasional di ajang OCEANIC MASCOT CHALLENGE 2026, yang diselenggarakan oleh HIMADEGA UNESA dengan tema "Diving into the Depths of Identity". Maskot ini menonjolkan gaya visual yang hidup, dinamis, dan memiliki identitas yang kuat.',
       barokDesc: 'Barok adalah karakter persona utama yang saya gunakan dalam berbagai karya ilustrasi dan komik. Desainnya mencerminkan gaya kreatif dan imajinatif yang menjadi representasi diri saya sebagai seorang seniman.',
-      webDesc1: 'Portfolio Website (Web Ini). Platform interaktif untuk memamerkan karya ilustrasi, desain karakter, dan proyek pengembangan web.',
-      webDesc2: 'Sistem pendaftaran siswa baru Salsabila Purworejo. Memudahkan proses administrasi dan pendaftaran calon siswa secara online.',
+      webName1: 'Portofolio Faazamu',
+      webDesc1: 'Website Portofolio pribadi. Platform interaktif untuk memamerkan karya ilustrasi, desain karakter, dan proyek pengembangan web.',
+      webName2: 'Salsabila Purworejo',
+      webDesc2: 'Website utama & publikasi sekolah serta sistem akademik sekolah (salpur.com), dilengkapi sistem pendaftaran siswa baru online (pmb.salpur.com).',
+      webName3: 'Pesantren Assalafiyyah Mlangi',
       webDesc3: 'Website resmi Pesantren Assalafiyyah Mlangi. Menampilkan profil, kegiatan, dan informasi seputar pondok pesantren.',
+      webName4: 'Inventaris Studio SMK',
       webDesc4: 'Sistem peminjaman barang studio SMK. Membantu manajemen inventaris dan pelacakan peminjaman alat di studio sekolah.'
     },
     achievements: {
       title: 'Prestasi & Penghargaan',
       ach1: 'Juara 1 Desain Maskot Nasional',
       desc1: 'OCEANIC MASCOT CHALLENGE 2026',
+      detail1: 'Penghargaan atas karya desain maskot "Diega", yang mengangkat tema identitas dan dinamika laut.',
       ach2: 'Juara 3 Komik Strip Provinsi',
       desc2: 'PEKSIMIPROV DIY 2026',
-      ach3: 'Juara 2 Web Design Nasional',
-      desc3: 'LKS SMK 2025' // I will verify this later
+      detail2: 'Penghargaan kategori Komik Strip yang dinilai berdasarkan orisinalitas, eksekusi cerita, dan gaya visual yang unik.',
+      ach3: 'Juara Harapan 2 Web Development Nasional',
+      desc3: 'HMJTI UIN Walisongo Semarang',
+      detail3: 'Penghargaan lomba Web Development tingkat nasional yang diselenggarakan oleh HMJTI UIN Walisongo Semarang.'
     },
     connect: {
       title: 'Mari Terhubung!',

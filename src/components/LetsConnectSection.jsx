@@ -71,7 +71,7 @@ const socials = [
   },
   {
     name: 'VGen',
-    url: 'https://vgen.co/faazamuartwork',
+    url: 'https://vgen.co/bakekok',
     icon: <FaPalette className="w-8 h-8 md:w-12 md:h-12 text-white" />,
     bg: 'bg-gradient-to-tr from-indigo-500 to-purple-500',
     pos: { top: '75%', left: '65%' },

@@ -6,6 +6,7 @@ import ImageModal from './ImageModal';
 // Import Assets
 import juaraMaskot from '../assets/achievements/certificates/juara1LombaMaskot.webp';
 import juaraKomik from '../assets/achievements/certificates/juara3LombaKomik.webp';
+import juaraWebDev from '../assets/achievements/certificates/juaraHarapan2WebDev.webp';
 import barokTrophy from '../assets/achievements/achivement.webp';
 
 const AchievementsSection = () => {
@@ -45,32 +46,32 @@ const AchievementsSection = () => {
       <div className="relative z-10 w-full max-w-7xl px-4 md:px-12 lg:px-24 mx-auto flex flex-col justify-center min-h-screen pt-[110vh] pb-16 md:pb-24 pointer-events-auto">
         
         {/* Header */}
-        <div className="text-center mb-10 md:mb-16 shrink-0">
+        <div className="text-center mb-8 md:mb-12 shrink-0">
            <p className="text-emerald-600 font-mono tracking-widest text-[10px] md:text-sm uppercase mb-1">Jejak Langkah</p>
            <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold text-slate-900 drop-shadow-sm">{t('achievements', 'title')}</h2>
         </div>
 
-        {/* Achievements Display */}
-        <div className="w-full flex flex-col md:flex-row flex-wrap items-center justify-center lg:justify-between gap-8 md:gap-8 shrink-0 pb-12">
-           
-           {/* Barok Illustration */}
-           <motion.div 
-             initial={{ opacity: 0, scale: 0.9, y: 50 }}
-             whileInView={{ opacity: 1, scale: 1, y: 0 }}
-             viewport={{ once: true, amount: 0.3 }}
-             transition={{ duration: 0.8, ease: "easeOut" }}
-             className="relative w-48 md:w-[200px] lg:w-[30%] max-w-xs flex items-center justify-center shrink-0 mb-6 md:mb-0"
-           >
-             <img loading="lazy" src={barokTrophy} alt="Barok memegang piala" className="w-full h-auto drop-shadow-xl" />
-           </motion.div>
+        {/* Barok Illustration with Trophy */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9, y: 30 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative w-40 md:w-52 mx-auto flex items-center justify-center shrink-0 mb-8 md:mb-12"
+        >
+          <img loading="lazy" src={barokTrophy} alt="Barok memegang piala" className="w-full h-auto drop-shadow-xl" />
+        </motion.div>
 
+        {/* Achievements Display Grid */}
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 shrink-0 pb-12 max-w-6xl mx-auto">
+           
            {/* Certificate 1: Maskot */}
            <motion.div 
              initial={{ opacity: 0, y: 50 }}
              whileInView={{ opacity: 1, y: 0 }}
              viewport={{ once: true, amount: 0.3 }}
              transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-             className="relative group w-[90%] md:w-[40%] lg:w-[32%] max-w-sm shrink-0"
+             className="relative group w-full max-w-sm mx-auto shrink-0"
            >
               <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl blur-lg opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
               <div className="relative bg-white p-3 md:p-5 rounded-2xl border border-slate-200 shadow-xl overflow-hidden hover:scale-[1.02] transition-transform duration-500 hover:rotate-1">
@@ -84,7 +85,7 @@ const AchievementsSection = () => {
                     <h3 className="text-lg md:text-xl font-bold text-slate-800 mb-0 md:mb-1">{t('achievements', 'ach1')}</h3>
                     <p className="text-amber-600 text-xs md:text-xs font-bold tracking-wide mb-1 md:mb-2 leading-tight">{t('achievements', 'desc1')}</p>
                     <p className="text-slate-500 text-xs leading-relaxed hidden lg:block">
-                       Penghargaan atas karya desain maskot "Diega", yang mengangkat tema identitas dan dinamika laut.
+                       {t('achievements', 'detail1')}
                     </p>
                  </div>
               </div>
@@ -96,7 +97,7 @@ const AchievementsSection = () => {
              whileInView={{ opacity: 1, y: 0 }}
              viewport={{ once: true, amount: 0.3 }}
              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-             className="relative group w-[90%] md:w-[40%] lg:w-[32%] max-w-sm shrink-0"
+             className="relative group w-full max-w-sm mx-auto shrink-0"
            >
               <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-pink-500 rounded-2xl blur-lg opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
               <div className="relative bg-white p-3 md:p-5 rounded-2xl border border-slate-200 shadow-xl overflow-hidden hover:scale-[1.02] transition-transform duration-500 hover:-rotate-1">
@@ -110,7 +111,33 @@ const AchievementsSection = () => {
                     <h3 className="text-lg md:text-xl font-bold text-slate-800 mb-0 md:mb-1">{t('achievements', 'ach2')}</h3>
                     <p className="text-purple-600 text-xs md:text-xs font-bold tracking-wide mb-1 md:mb-2 leading-tight">{t('achievements', 'desc2')}</p>
                     <p className="text-slate-500 text-xs leading-relaxed hidden lg:block">
-                       Penghargaan kategori Komik Strip yang dinilai berdasarkan orisinalitas, eksekusi cerita, dan gaya visual yang unik.
+                       {t('achievements', 'detail2')}
+                    </p>
+                 </div>
+              </div>
+           </motion.div>
+
+           {/* Certificate 3: Web Development */}
+           <motion.div 
+             initial={{ opacity: 0, y: 50 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true, amount: 0.3 }}
+             transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+             className="relative group w-full max-w-sm mx-auto shrink-0"
+           >
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl blur-lg opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+              <div className="relative bg-white p-3 md:p-5 rounded-2xl border border-slate-200 shadow-xl overflow-hidden hover:scale-[1.02] transition-transform duration-500 hover:rotate-1">
+                 <img loading="lazy" 
+                    src={juaraWebDev} 
+                    alt="Juara Harapan 2 Web Development" 
+                    onClick={() => setModalImage(juaraWebDev)}
+                    className="w-full h-auto rounded-lg shadow-sm border border-slate-100 cursor-pointer hover:opacity-90 transition-opacity" 
+                 />
+                 <div className="mt-2 md:mt-4 px-1 text-center md:text-left">
+                    <h3 className="text-lg md:text-xl font-bold text-slate-800 mb-0 md:mb-1">{t('achievements', 'ach3')}</h3>
+                    <p className="text-blue-600 text-xs md:text-xs font-bold tracking-wide mb-1 md:mb-2 leading-tight">{t('achievements', 'desc3')}</p>
+                    <p className="text-slate-500 text-xs leading-relaxed hidden lg:block">
+                       {t('achievements', 'detail3')}
                     </p>
                  </div>
               </div>

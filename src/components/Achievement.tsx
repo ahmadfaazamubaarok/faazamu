@@ -10,11 +10,11 @@ const achievements = [
     description: "National mascot design competition",
   },
   {
-    title: "TopRank 2026 UI/UX Live Challenge — Finalist",
-    description: "UI/UX design competition",
+    title: "Juara Harapan 2 — National Web Development 2026",
+    description: "HMJTI UIN Walisongo Semarang",
   },
   {
-    title: "Peksimiprov DIY 2026 — Comic Competition Participant",
+    title: "3rd Place — Peksimiprov DIY 2026",
     description: "Regional comic competition",
   },
 ];

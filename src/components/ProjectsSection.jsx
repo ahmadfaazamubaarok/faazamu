@@ -530,10 +530,10 @@ const ProjectsSection = () => {
                    </div>
                    
                    {/* Content */}
-                   <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors duration-300">faazamu.xyz</h3>
+                   <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors duration-300">{t('projects', 'webName1')}</h3>
                    
                    <p className="text-slate-400 mb-6 leading-relaxed font-light text-sm max-w-[95%] flex-1">
-                      Portfolio Website (Web Ini). Platform interaktif untuk memamerkan karya ilustrasi, desain karakter, dan proyek pengembangan web.
+                      {t('projects', 'webDesc1')}
                    </p>
                    
                    {/* Tags */}
@@ -546,34 +546,59 @@ const ProjectsSection = () => {
               </div>
             </a>
 
-            {/* Project 2: PMB Salpur */}
-            <a href="https://pmb.salpur.com" target="_blank" rel="noopener noreferrer" className="relative block rounded-[2rem] p-[1px] overflow-hidden group hover:-translate-y-2 transition-all duration-500 shadow-xl hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.3)] min-h-[280px]">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/50 via-transparent to-purple-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            {/* Project 2: Salsabila Purworejo (PMB & Web Utama/Akademik) */}
+            <div className="relative block rounded-[2rem] p-[1px] overflow-hidden group hover:-translate-y-2 transition-all duration-500 shadow-xl hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.3)] min-h-[280px]">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/50 via-transparent to-purple-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
               <div className="relative bg-[#0b1121] rounded-[2rem] overflow-hidden h-full p-6 md:p-8 flex flex-col border border-white/5 group-hover:border-white/10 transition-colors duration-500 z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-500/10 via-[#0b1121]/50 to-[#0b1121]">
                 <div className="absolute -bottom-8 -right-8 text-[10rem] opacity-[0.02] group-hover:opacity-10 group-hover:-translate-y-4 group-hover:-translate-x-4 group-hover:-rotate-12 transition-all duration-700 pointer-events-none blur-[4px] group-hover:blur-none select-none">
-                   📝
+                   🏫
                 </div>
                 <div className="relative z-10 flex-1 flex flex-col">
                    <div className="flex items-start justify-between mb-6">
                       <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-blue-500/10 to-purple-600/10 flex items-center justify-center border border-blue-500/20 shadow-[0_0_20px_rgba(59,130,246,0.1)] group-hover:scale-110 group-hover:-rotate-6 group-hover:bg-blue-500/20 transition-all duration-500 backdrop-blur-xl">
-                         <span className="text-2xl md:text-3xl group-hover:scale-110 transition-transform duration-500">📝</span>
+                         <span className="text-2xl md:text-3xl group-hover:scale-110 transition-transform duration-500">🏫</span>
                       </div>
-                      <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-blue-500/20 group-hover:border-blue-500/30 transition-colors duration-500">
-                        <svg className="w-4 h-4 text-white/30 group-hover:text-blue-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <a 
+                        href="https://salpur.com" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-blue-500/30 hover:border-blue-500/50 transition-all duration-300 group/btn"
+                        title="Kunjungi salpur.com"
+                      >
+                        <svg className="w-4 h-4 text-white/40 group-hover/btn:text-blue-400 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
-                      </div>
+                      </a>
                    </div>
-                   <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300">pmb.salpur.com</h3>
+                   
+                   <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300">{t('projects', 'webName2')}</h3>
+                   
                    <p className="text-slate-400 mb-6 leading-relaxed font-light text-sm max-w-[95%] flex-1">
-                      Sistem pendaftaran siswa baru Salsabila Purworejo. Memudahkan proses administrasi dan pendaftaran calon siswa secara online.
+                      {t('projects', 'webDesc2')}
                    </p>
-                   <div className="flex flex-wrap gap-2 mt-auto">
-                      <span className="px-3 py-1.5 bg-blue-500/10 text-blue-300 text-[10px] md:text-xs font-medium rounded-full border border-blue-500/20 backdrop-blur-sm group-hover:bg-blue-500/20 group-hover:border-blue-500/40 transition-colors">Web System</span>
+                   
+                   <div className="flex flex-wrap items-center gap-2 mt-auto pt-2">
+                      <a 
+                        href="https://salpur.com" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="px-3 py-1.5 bg-blue-500/20 text-blue-300 hover:text-white hover:bg-blue-500/40 text-[10px] md:text-xs font-medium rounded-full border border-blue-500/30 backdrop-blur-sm transition-all duration-200 flex items-center gap-1"
+                      >
+                        salpur.com ↗
+                      </a>
+                      <a 
+                        href="https://pmb.salpur.com" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="px-3 py-1.5 bg-purple-500/20 text-purple-300 hover:text-white hover:bg-purple-500/40 text-[10px] md:text-xs font-medium rounded-full border border-purple-500/30 backdrop-blur-sm transition-all duration-200 flex items-center gap-1"
+                      >
+                        pmb.salpur.com ↗
+                      </a>
+                      <span className="px-3 py-1.5 bg-white/5 text-slate-400 text-[10px] md:text-xs font-medium rounded-full border border-white/10 backdrop-blur-sm">Web System</span>
                    </div>
                 </div>
               </div>
-            </a>
+            </div>
 
             {/* Project 3: PPASM */}
             <a href="https://ppasm.com" target="_blank" rel="noopener noreferrer" className="relative block rounded-[2rem] p-[1px] overflow-hidden group hover:-translate-y-2 transition-all duration-500 shadow-xl hover:shadow-[0_20px_40px_-15px_rgba(168,85,247,0.3)] min-h-[280px]">
@@ -593,9 +618,9 @@ const ProjectsSection = () => {
                         </svg>
                       </div>
                    </div>
-                   <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300">ppasm.com</h3>
+                   <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300">{t('projects', 'webName3')}</h3>
                    <p className="text-slate-400 mb-6 leading-relaxed font-light text-sm max-w-[95%] flex-1">
-                      Website resmi Pesantren Assalafiyyah Mlangi. Menampilkan profil, kegiatan, dan informasi seputar pondok pesantren.
+                      {t('projects', 'webDesc3')}
                    </p>
                    <div className="flex flex-wrap gap-2 mt-auto">
                       <span className="px-3 py-1.5 bg-purple-500/10 text-purple-300 text-[10px] md:text-xs font-medium rounded-full border border-purple-500/20 backdrop-blur-sm group-hover:bg-purple-500/20 group-hover:border-purple-500/40 transition-colors">Company Profile</span>
@@ -622,9 +647,9 @@ const ProjectsSection = () => {
                         </svg>
                       </div>
                    </div>
-                   <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors duration-300">inv.smkam.sch.id</h3>
+                   <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors duration-300">{t('projects', 'webName4')}</h3>
                    <p className="text-slate-400 mb-6 leading-relaxed font-light text-sm max-w-[95%] flex-1">
-                    Sistem peminjaman barang studio SMK. Membantu manajemen inventaris dan pelacakan peminjaman alat di studio sekolah.
+                      {t('projects', 'webDesc4')}
                    </p>
                    <div className="flex flex-wrap gap-2 mt-auto">
                       <span className="px-3 py-1.5 bg-orange-500/10 text-orange-300 text-[10px] md:text-xs font-medium rounded-full border border-orange-500/20 backdrop-blur-sm group-hover:bg-orange-500/20 group-hover:border-orange-500/40 transition-colors">Web System</span>
