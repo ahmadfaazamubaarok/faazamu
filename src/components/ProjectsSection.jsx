@@ -658,6 +658,37 @@ const ProjectsSection = () => {
               </div>
             </a>
 
+            {/* Project 5: Wistara */}
+            <a href="https://gulingkanrezim.vercel.app" target="_blank" rel="noopener noreferrer" className="relative block rounded-[2rem] p-[1px] overflow-hidden group hover:-translate-y-2 transition-all duration-500 shadow-xl hover:shadow-[0_20px_40px_-15px_rgba(14,165,233,0.3)] min-h-[280px] md:col-span-2 md:max-w-[480px] md:mx-auto w-full">
+              <div className="absolute inset-0 bg-gradient-to-br from-sky-500/50 via-transparent to-teal-500/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative bg-[#0b1121] rounded-[2rem] overflow-hidden h-full p-6 md:p-8 flex flex-col border border-white/5 group-hover:border-white/10 transition-colors duration-500 z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-sky-500/10 via-[#0b1121]/50 to-[#0b1121]">
+                <div className="absolute -bottom-8 -right-8 text-[10rem] opacity-[0.02] group-hover:opacity-10 group-hover:-translate-y-4 group-hover:-translate-x-4 group-hover:rotate-12 transition-all duration-700 pointer-events-none blur-[4px] group-hover:blur-none select-none">
+                   🌤️
+                </div>
+                <div className="relative z-10 flex-1 flex flex-col">
+                   <div className="flex items-start justify-between mb-6">
+                      <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-sky-500/10 to-teal-500/10 flex items-center justify-center border border-sky-500/20 shadow-[0_0_20px_rgba(14,165,233,0.1)] group-hover:scale-110 group-hover:rotate-6 group-hover:bg-sky-500/20 transition-all duration-500 backdrop-blur-xl">
+                         <span className="text-2xl md:text-3xl group-hover:scale-110 transition-transform duration-500">🌤️</span>
+                      </div>
+                      <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-sky-500/20 group-hover:border-sky-500/30 transition-colors duration-500">
+                        <svg className="w-4 h-4 text-white/30 group-hover:text-sky-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </div>
+                   </div>
+                   <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-sky-400 transition-colors duration-300">{t('projects', 'webName5')}</h3>
+                   <p className="text-slate-400 mb-6 leading-relaxed font-light text-sm max-w-[95%] flex-1">
+                      {t('projects', 'webDesc5')}
+                   </p>
+                   <div className="flex flex-wrap gap-2 mt-auto">
+                      <span className="px-3 py-1.5 bg-sky-500/10 text-sky-300 text-[10px] md:text-xs font-medium rounded-full border border-sky-500/20 backdrop-blur-sm group-hover:bg-sky-500/20 group-hover:border-sky-500/40 transition-colors">Next.js</span>
+                      <span className="px-3 py-1.5 bg-teal-500/10 text-teal-300 text-[10px] md:text-xs font-medium rounded-full border border-teal-500/20 backdrop-blur-sm group-hover:bg-teal-500/20 group-hover:border-teal-500/40 transition-colors">Weather API</span>
+                      <span className="px-3 py-1.5 bg-indigo-500/10 text-indigo-300 text-[10px] md:text-xs font-medium rounded-full border border-indigo-500/20 backdrop-blur-sm group-hover:bg-indigo-500/20 group-hover:border-indigo-500/40 transition-colors">Kolaborasi</span>
+                   </div>
+                </div>
+              </div>
+            </a>
+
         </div>
       </div>
     </section>

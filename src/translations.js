@@ -47,7 +47,9 @@ export const translations = {
       webName3: 'Pesantren Assalafiyyah Mlangi',
       webDesc3: 'Official website of Assalafiyyah Mlangi Islamic Boarding School. Displays profiles, activities, and information about the boarding school.',
       webName4: 'SMK Studio Inventory',
-      webDesc4: 'SMK studio equipment borrowing system. Helps with inventory management and tracking equipment loans in the school studio.'
+      webDesc4: 'SMK studio equipment borrowing system. Helps with inventory management and tracking equipment loans in the school studio.',
+      webName5: 'Wistara',
+      webDesc5: 'Collaborative web platform for Yogyakarta (DIY) tourism destinations and weather forecasts to recommend the best visiting times.'
     },
     achievements: {
       title: 'Achievements & Awards',
@@ -135,7 +137,9 @@ export const translations = {
       webName3: 'Pesantren Assalafiyyah Mlangi',
       webDesc3: 'Website resmi Pesantren Assalafiyyah Mlangi. Menampilkan profil, kegiatan, dan informasi seputar pondok pesantren.',
       webName4: 'Inventaris Studio SMK',
-      webDesc4: 'Sistem peminjaman barang studio SMK. Membantu manajemen inventaris dan pelacakan peminjaman alat di studio sekolah.'
+      webDesc4: 'Sistem peminjaman barang studio SMK. Membantu manajemen inventaris dan pelacakan peminjaman alat di studio sekolah.',
+      webName5: 'Wistara',
+      webDesc5: 'Website kolaborasi informasi destinasi wisata Yogyakarta (DIY) dan perkiraan cuaca untuk rekomendasi waktu terbaik berkunjung.'
     },
     achievements: {
       title: 'Prestasi & Penghargaan',
