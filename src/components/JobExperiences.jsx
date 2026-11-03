@@ -1,11 +1,10 @@
 import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function JobExperiences() {
   const { t } = useLanguage();
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const experiences = [
     { id: 1, role: t('career', 'exp1'), year: t('career', 'present') },
@@ -33,7 +32,7 @@ export default function JobExperiences() {
     <section id="karir" className="relative w-full py-32 bg-gradient-to-b from-[#0d2a45] to-[#061423] overflow-hidden flex flex-col items-center">
       
       <motion.div 
-        initial={{ opacity: 0, y: -20 }}
+        initial={{ opacity: 1, y: 0 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
@@ -46,8 +45,8 @@ export default function JobExperiences() {
       <motion.div 
         ref={ref}
         variants={containerVariants}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
+        initial="visible"
+        animate="visible"
         className="w-full max-w-4xl px-6 md:px-12 flex flex-col gap-6 z-10"
       >
         {experiences.map((exp) => (

@@ -9,6 +9,7 @@ import AchievementsSection from './components/AchievementsSection';
 import LetsConnectSection from './components/LetsConnectSection';
 import AnonymousMessageSection from './components/AnonymousMessageSection';
 import Footer from './components/Footer';
+import SwarmRebuild from './components/SwarmRebuild';
 
 function App() {
   // Inisialisasi Lenis Smooth Scroll
@@ -36,14 +37,22 @@ function App() {
   return (
     <main className="relative w-full h-full bg-[#0b1a30]">
       <Navbar />
-      <HeroSection />
-      <AboutMe />
-      <JobExperiences />
+
+      {/* Target scope untuk animasi Swarm Rebuild (Hero sampai Job Experience) */}
+      <div id="swarm-scope" className="relative w-full">
+        <HeroSection />
+        <AboutMe />
+        <JobExperiences />
+      </div>
+
       <ProjectsSection />
       <AchievementsSection />
       <LetsConnectSection />
       <AnonymousMessageSection />
       <Footer />
+
+      {/* Controller Swarm Rebuild */}
+      <SwarmRebuild targetId="swarm-scope" autoStart={true} />
     </main>
   );
 }
