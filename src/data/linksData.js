@@ -6,7 +6,6 @@
 
 export const profile = {
   name: "Ahmad Faaza Mubaarok",
-  handle: "@faazamu",
   avatar: "/logo.webp",
   bio: "Illustrator & Web Developer",
 };
@@ -16,13 +15,13 @@ export const comms = [
     name: "VGen",
     tagline: "Commission via VGen",
     url: "https://vgen.co/bakekok",
-    isPrimary: true, // Menggunakan aksen Pinterest Red (#e60023)
+    icon: "vgen",
   },
   {
     name: "drawmarket",
     tagline: "Commission via drawmarket",
     url: "https://drawmarket.id",
-    isPrimary: false,
+    icon: "drawmarket",
   },
 ];
 
