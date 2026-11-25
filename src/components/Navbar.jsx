@@ -108,6 +108,19 @@ const Navbar = () => {
             >
               {language === 'en' ? 'EN' : 'ID'}
             </button>
+
+            <a
+              href="/link"
+              className={`px-3.5 py-1 rounded-full text-xs font-semibold border transition-all flex items-center gap-1.5 ${
+                isScrolled
+                  ? 'border-[#0b1a30] bg-[#0b1a30] text-white hover:bg-sky-800 shadow-sm'
+                  : 'border-slate-800 bg-slate-900/85 text-white hover:bg-[#0b1a30] shadow-sm'
+              }`}
+              title="Kumpulan Link & Komisi"
+            >
+              <span>Links</span>
+              <span className="text-[10px] opacity-80">↗</span>
+            </a>
           </div>
         </div>
       </motion.nav>
@@ -171,6 +184,15 @@ const Navbar = () => {
                     </a>
                   </li>
                 ))}
+                <li className="border-t border-slate-100 mt-1 pt-1">
+                  <a
+                    href="/link"
+                    className="block px-6 py-3 text-sm font-semibold text-sky-700 active:bg-sky-50 flex items-center justify-between"
+                  >
+                    <span>Links Hub</span>
+                    <span className="text-xs">↗</span>
+                  </a>
+                </li>
               </ul>
             </motion.div>
           )}
