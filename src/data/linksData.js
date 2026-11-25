@@ -6,7 +6,7 @@
 
 export const profile = {
   name: "Ahmad Faaza Mubaarok",
-  avatar: "/logo.webp",
+  avatar: "/profile.jpg",
   bio: "Illustrator & Web Developer",
 };
 
