@@ -25,20 +25,20 @@ import illu8 from '../assets/illustrationArtworks/illustrations/illustration8.we
 import illu9 from '../assets/illustrationArtworks/illustrations/illustration9.webp';
 import illu10 from '../assets/illustrationArtworks/illustrations/illustration10.webp';
 
+// 4 kartu di kiri, tumpukan rapat agar tidak melebihi tinggi footer
 const leftArtworks = [
-  { src: illu1, title: 'Artwork 1', rotate: '-rotate-[6deg]', offset: '-ml-4', z: 'z-10' },
-  { src: illu3, title: 'Artwork 3', rotate: 'rotate-[5deg]', offset: 'ml-2', z: 'z-15' },
-  { src: illu5, title: 'Artwork 5', rotate: '-rotate-[8deg]', offset: '-ml-2', z: 'z-20' },
-  { src: illu7, title: 'Artwork 7', rotate: 'rotate-[4deg]', offset: 'ml-4', z: 'z-10' },
-  { src: illu9, title: 'Artwork 9', rotate: '-rotate-[5deg]', offset: '-ml-1', z: 'z-15' },
+  { src: illu1, title: 'Artwork 1', rotate: '-rotate-[8deg]', offset: '-translate-x-2', z: 'z-10' },
+  { src: illu3, title: 'Artwork 3', rotate: 'rotate-[6deg]', offset: 'translate-x-3', z: 'z-15' },
+  { src: illu5, title: 'Artwork 5', rotate: '-rotate-[7deg]', offset: '-translate-x-1', z: 'z-20' },
+  { src: illu7, title: 'Artwork 7', rotate: 'rotate-[5deg]', offset: 'translate-x-2', z: 'z-10' },
 ];
 
+// 4 kartu di kanan, tumpukan rapat agar tidak melebihi tinggi footer
 const rightArtworks = [
-  { src: illu2, title: 'Artwork 2', rotate: 'rotate-[6deg]', offset: '-mr-4', z: 'z-10' },
-  { src: illu4, title: 'Artwork 4', rotate: '-rotate-[5deg]', offset: 'mr-2', z: 'z-15' },
-  { src: illu6, title: 'Artwork 6', rotate: 'rotate-[8deg]', offset: '-mr-2', z: 'z-20' },
-  { src: illu8, title: 'Artwork 8', rotate: '-rotate-[6deg]', offset: 'mr-4', z: 'z-10' },
-  { src: illu10, title: 'Artwork 10', rotate: 'rotate-[4deg]', offset: '-mr-1', z: 'z-15' },
+  { src: illu2, title: 'Artwork 2', rotate: 'rotate-[8deg]', offset: 'translate-x-2', z: 'z-10' },
+  { src: illu4, title: 'Artwork 4', rotate: '-rotate-[6deg]', offset: '-translate-x-3', z: 'z-15' },
+  { src: illu6, title: 'Artwork 6', rotate: 'rotate-[7deg]', offset: 'translate-x-1', z: 'z-20' },
+  { src: illu8, title: 'Artwork 8', rotate: '-rotate-[5deg]', offset: '-translate-x-2', z: 'z-10' },
 ];
 
 const allMobileArtworks = [
@@ -87,20 +87,22 @@ export default function LinksPage() {
     <div className="min-h-screen w-full bg-[#fbfbf9] text-[#33332e] font-sans antialiased relative overflow-x-hidden flex flex-col justify-between py-10 sm:py-14 px-4 selection:bg-[#f6f6f3] selection:text-[#000000]">
       
       {/* ============================================================ */}
-      {/* DESKTOP ONLY: Card Berserakan di Samping Kiri (Saling Timpa)  */}
+      {/* DESKTOP ONLY: Card Berserakan di Sisi Kiri                   */}
+      {/* Keluar dari viewport (-left-14 / -left-20)                   */}
+      {/* Tinggi tumpukan terkunci rapat agar tidak melebihi footer    */}
       {/* ============================================================ */}
-      <aside className="hidden lg:flex flex-col absolute left-2 xl:left-8 top-12 w-44 xl:w-52 pointer-events-auto select-none z-10">
+      <aside className="hidden lg:flex flex-col absolute -left-14 xl:-left-20 2xl:-left-24 top-10 w-44 xl:w-52 pointer-events-auto select-none z-10">
         {leftArtworks.map((art, idx) => (
           <div
             key={idx}
-            className={`w-40 xl:w-48 bg-[#ffffff] p-2 pb-3.5 rounded-[16px] border border-[#dadad3] shadow-sm hover:shadow-2xl hover:scale-110 hover:rotate-0 hover:z-30 transition-all duration-300 cursor-pointer ${
-              idx > 0 ? '-mt-10 xl:-mt-12' : ''
+            className={`w-44 xl:w-52 bg-[#ffffff] p-2.5 pb-3.5 rounded-[16px] border border-[#dadad3] shadow-sm hover:shadow-2xl hover:scale-110 hover:rotate-0 hover:translate-x-12 hover:z-30 transition-all duration-300 cursor-pointer ${
+              idx > 0 ? '-mt-16 xl:-mt-20' : ''
             } ${art.rotate} ${art.offset} ${art.z}`}
           >
             <img
               src={art.src}
               alt={art.title}
-              className="w-full h-44 xl:h-52 object-cover rounded-[12px] bg-[#f6f6f3]"
+              className="w-full h-36 xl:h-44 object-cover rounded-[12px] bg-[#f6f6f3]"
               loading="lazy"
             />
           </div>
@@ -108,20 +110,22 @@ export default function LinksPage() {
       </aside>
 
       {/* ============================================================ */}
-      {/* DESKTOP ONLY: Card Berserakan di Samping Kanan (Saling Timpa) */}
+      {/* DESKTOP ONLY: Card Berserakan di Sisi Kanan                  */}
+      {/* Keluar dari viewport (-right-14 / -right-20)                 */}
+      {/* Tinggi tumpukan terkunci rapat agar tidak melebihi footer    */}
       {/* ============================================================ */}
-      <aside className="hidden lg:flex flex-col absolute right-2 xl:right-8 top-16 w-44 xl:w-52 pointer-events-auto select-none z-10 items-end">
+      <aside className="hidden lg:flex flex-col absolute -right-14 xl:-right-20 2xl:-right-24 top-14 w-44 xl:w-52 pointer-events-auto select-none z-10 items-end">
         {rightArtworks.map((art, idx) => (
           <div
             key={idx}
-            className={`w-40 xl:w-48 bg-[#ffffff] p-2 pb-3.5 rounded-[16px] border border-[#dadad3] shadow-sm hover:shadow-2xl hover:scale-110 hover:rotate-0 hover:z-30 transition-all duration-300 cursor-pointer ${
-              idx > 0 ? '-mt-10 xl:-mt-12' : ''
+            className={`w-44 xl:w-52 bg-[#ffffff] p-2.5 pb-3.5 rounded-[16px] border border-[#dadad3] shadow-sm hover:shadow-2xl hover:scale-110 hover:rotate-0 hover:-translate-x-12 hover:z-30 transition-all duration-300 cursor-pointer ${
+              idx > 0 ? '-mt-16 xl:-mt-20' : ''
             } ${art.rotate} ${art.offset} ${art.z}`}
           >
             <img
               src={art.src}
               alt={art.title}
-              className="w-full h-44 xl:h-52 object-cover rounded-[12px] bg-[#f6f6f3]"
+              className="w-full h-36 xl:h-44 object-cover rounded-[12px] bg-[#f6f6f3]"
               loading="lazy"
             />
           </div>
