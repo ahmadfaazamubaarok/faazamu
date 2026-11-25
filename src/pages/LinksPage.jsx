@@ -154,23 +154,16 @@ const rightArcArtworks = [
   },
 ];
 
-const allMobileArtworks = [
-  { src: illu1, title: 'Illustration 1', rotate: '-rotate-6' },
-  { src: illu2, title: 'Illustration 2', rotate: 'rotate-3' },
-  { src: illu3, title: 'Illustration 3', rotate: '-rotate-4' },
-  { src: illu4, title: 'Illustration 4', rotate: 'rotate-6' },
-  { src: illu5, title: 'Illustration 5', rotate: '-rotate-8' },
-  { src: illu6, title: 'Illustration 6', rotate: 'rotate-5' },
-  { src: illu7, title: 'Illustration 7', rotate: '-rotate-5' },
-  { src: illu8, title: 'Illustration 8', rotate: 'rotate-7' },
-  { src: illu9, title: 'Illustration 9', rotate: '-rotate-6' },
-  { src: illu10, title: 'Illustration 10', rotate: 'rotate-4' },
-  { src: illu11, title: 'Illustration 11', rotate: '-rotate-7' },
-  { src: comic1, title: 'Comic 1', rotate: 'rotate-5' },
-  { src: comic2, title: 'Comic 2', rotate: '-rotate-4' },
-  { src: comic3, title: 'Comic 3', rotate: 'rotate-6' },
-  { src: comic4, title: 'Comic 4', rotate: '-rotate-5' },
-  { src: comic5, title: 'Comic 5', rotate: 'rotate-3' },
+// Mode Mobile: 7 gambar berukuran BESAR membentuk garis lengkung U (U-Curve)
+// Ujung kiri & kanan tinggi melongok, bagian tengah melengkung turun ke bawah
+const mobileUCurveArtworks = [
+  { src: illu1, title: 'Art 1', rotate: '-rotate-[16deg]', y: '-translate-y-3 sm:-translate-y-4', z: 'z-25' },
+  { src: illu3, title: 'Art 3', rotate: '-rotate-[10deg]', y: 'translate-y-3 sm:translate-y-4', z: 'z-20' },
+  { src: illu5, title: 'Art 5', rotate: '-rotate-[4deg]', y: 'translate-y-8 sm:translate-y-10', z: 'z-15' },
+  { src: illu7, title: 'Art 7', rotate: 'rotate-[1deg]', y: 'translate-y-12 sm:translate-y-14', z: 'z-10' },
+  { src: illu9, title: 'Art 9', rotate: 'rotate-[5deg]', y: 'translate-y-8 sm:translate-y-10', z: 'z-15' },
+  { src: illu11, title: 'Art 11', rotate: 'rotate-[11deg]', y: 'translate-y-3 sm:translate-y-4', z: 'z-20' },
+  { src: comic1, title: 'Comic 1', rotate: 'rotate-[16deg]', y: '-translate-y-3 sm:-translate-y-4', z: 'z-25' },
 ];
 
 function getIcon(iconName) {
@@ -365,21 +358,22 @@ export default function LinksPage() {
         </p>
       </footer>
 
-      {/* ============================================================ */}
-      {/* MOBILE ONLY: Gambar mentok ke bawah & kanan-kiri viewport    */}
-      {/* Menggunakan -mx-4 dan w-[calc(100%+2rem)] agar full-bleed    */}
-      {/* ============================================================ */}
-      <div className="block lg:hidden relative z-10 -mx-4 w-[calc(100%+2rem)] overflow-hidden mt-6 h-20 sm:h-24 pointer-events-none select-none">
-        <div className="flex justify-center items-start -space-x-8 sm:-space-x-10 translate-y-3 min-w-full">
-          {allMobileArtworks.slice(0, 9).map((art, idx) => (
+      {/* ========================================================================= */}
+      {/* MOBILE ONLY: Gambar BESAR membentuk Garis Lengkung U di Bawah Footer      */}
+      {/* - Ujung kiri & kanan tinggi melongok, tengah turun melengkung (U-Shape)  */}
+      {/* - Mentok kanan-kiri (-mx-4 full bleed) & mentok bawah viewport           */}
+      {/* ========================================================================= */}
+      <div className="block lg:hidden relative z-10 -mx-4 w-[calc(100%+2rem)] overflow-hidden mt-6 h-32 sm:h-40 pointer-events-none select-none">
+        <div className="flex justify-center items-start -space-x-10 sm:-space-x-14 min-w-full">
+          {mobileUCurveArtworks.map((art, idx) => (
             <div
               key={idx}
-              className={`shrink-0 w-28 sm:w-36 drop-shadow-[0_20px_35px_rgba(0,0,0,0.10)] ${art.rotate}`}
+              className={`shrink-0 w-36 sm:w-44 drop-shadow-[0_20px_35px_rgba(0,0,0,0.11)] transition-transform ${art.y} ${art.rotate} ${art.z}`}
             >
               <img
                 src={art.src}
                 alt={art.title}
-                className="w-full h-auto object-cover rounded-[14px] block shadow-[0_10px_20px_rgba(0,0,0,0.05)]"
+                className="w-full h-auto object-cover rounded-[14px] block shadow-[0_12px_24px_rgba(0,0,0,0.06)]"
                 loading="lazy"
               />
             </div>
