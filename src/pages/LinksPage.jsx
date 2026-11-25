@@ -11,7 +11,7 @@ import {
   FaBrush,
 } from 'react-icons/fa6';
 import { ExternalLink } from 'lucide-react';
-import { profile, comms, medsos } from '../data/linksData';
+import { profile, comms, medsos } from '../../linksData';
 
 function getIcon(iconName) {
   switch (iconName?.toLowerCase()) {

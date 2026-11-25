@@ -12,7 +12,7 @@ import {
   FaPalette,
   FaBrush
 } from 'react-icons/fa6';
-import { comms, medsos } from '../data/linksData';
+import { comms, medsos } from '../../linksData';
 
 // Helper untuk mengambil URL tersinkronisasi dari linksData.js
 const getSocialsList = () => {
