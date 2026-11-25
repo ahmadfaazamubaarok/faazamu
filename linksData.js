@@ -18,9 +18,9 @@ export const comms = [
     icon: "vgen",
   },
   {
-    name: "drawmarket",
+    name: "DrawMarket",
     tagline: "Commission via drawmarket",
-    url: "https://drawmarket.id",
+    url: "https://draw.market/bakekok",
     icon: "drawmarket",
   },
 ];
@@ -28,8 +28,8 @@ export const comms = [
 export const medsos = [
   {
     name: "Instagram",
-    handle: "@faazamuartwork",
-    url: "https://instagram.com/faazamuartwork",
+    handle: "@bakekokart",
+    url: "https://instagram.com/bakekok",
     icon: "instagram",
   },
   {
@@ -40,8 +40,8 @@ export const medsos = [
   },
   {
     name: "X",
-    handle: "@faazamuartwork",
-    url: "https://x.com/faazamuartwork",
+    handle: "@faazamu",
+    url: "https://x.com/faazamu",
     icon: "x",
   },
   {
@@ -65,7 +65,7 @@ export const medsos = [
   {
     name: "Pinterest",
     handle: "@faazamuartwork",
-    url: "https://id.pinterest.com/faazamuartwork/",
+    url: "https://pin.it/7r3pam1dN",
     icon: "pinterest",
   },
 ];
