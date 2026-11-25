@@ -8,7 +8,7 @@ import {
   FaGithub,
   FaPinterest,
 } from 'react-icons/fa6';
-import { ExternalLink, ArrowLeft } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { profile, comms, medsos } from '../data/linksData';
 
 function getMedsosIcon(iconName) {
@@ -35,23 +35,7 @@ function getMedsosIcon(iconName) {
 
 export default function LinksPage() {
   return (
-    <div className="min-h-screen w-full bg-[#fbfbf9] text-[#33332e] font-sans antialiased flex flex-col justify-between py-10 px-4 selection:bg-[#f6f6f3] selection:text-[#000000]">
-      {/* Top Header Navigation */}
-      <header className="w-full max-w-md mx-auto flex items-center justify-between mb-8">
-        <a
-          href="/"
-          className="inline-flex items-center gap-2 text-xs font-bold text-[#62625b] hover:text-[#000000] px-3.5 py-2 rounded-full bg-[#f6f6f3] hover:bg-[#e5e5e0] active:bg-[#c8c8c1] transition-colors"
-        >
-          <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Portofolio</span>
-        </a>
-
-        <div className="flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-[#e60023]" />
-          <span className="text-xs font-bold tracking-tight text-[#000000]">faazamu</span>
-        </div>
-      </header>
-
+    <div className="min-h-screen w-full bg-[#fbfbf9] text-[#33332e] font-sans antialiased flex flex-col justify-between py-12 sm:py-16 px-4 selection:bg-[#f6f6f3] selection:text-[#000000]">
       {/* Main Content */}
       <main className="w-full max-w-md mx-auto flex flex-col items-center">
         {/* Profile Avatar & Info */}
@@ -72,11 +56,10 @@ export default function LinksPage() {
 
         {/* Section 1: Comms */}
         <section className="w-full mb-8">
-          <div className="flex items-center justify-between mb-3 px-1">
+          <div className="flex items-center mb-3 px-1">
             <h2 className="text-xs font-bold uppercase tracking-wider text-[#62625b]">
               Comms
             </h2>
-            <span className="text-[11px] font-semibold text-[#e60023]">Open</span>
           </div>
 
           <div className="flex flex-col gap-2.5">
