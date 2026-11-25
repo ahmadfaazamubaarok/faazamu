@@ -13,7 +13,7 @@ import {
 import { ExternalLink } from 'lucide-react';
 import { profile, comms, medsos } from '../../linksData';
 
-// Import gambar ilustrasi untuk dekorasi samping desktop & mobile stack
+// Import seluruh ilustrasi & komik portofolio
 import illu1 from '../assets/illustrationArtworks/illustrations/illustration1.webp';
 import illu2 from '../assets/illustrationArtworks/illustrations/illustration2.webp';
 import illu3 from '../assets/illustrationArtworks/illustrations/illustration3.webp';
@@ -24,92 +24,153 @@ import illu7 from '../assets/illustrationArtworks/illustrations/illustration7.we
 import illu8 from '../assets/illustrationArtworks/illustrations/illustration8.webp';
 import illu9 from '../assets/illustrationArtworks/illustrations/illustration9.webp';
 import illu10 from '../assets/illustrationArtworks/illustrations/illustration10.webp';
+import illu11 from '../assets/illustrationArtworks/illustrations/illustration11.webp';
 
-// 4 kartu sisi KIRI membentuk pola LENGKUNGAN (arc):
-// Atas & Bawah digeser ke arah tengah, bagian Tengah melengkung keluar layar
+import comic1 from '../assets/comicArworks/comic1.webp';
+import comic2 from '../assets/comicArworks/comic2.webp';
+import comic3 from '../assets/comicArworks/comic3.webp';
+import comic4 from '../assets/comicArworks/comic4.webp';
+import comic5 from '../assets/comicArworks/comic5.webp';
+
+// KIRI: 8 karya besar tanpa bingkai, tersusun padat saling timpa dalam pola lengkungan
+// Mentok sampai batas viewport (atas top-1, bawah bottom-1)
 const leftArcArtworks = [
   {
     src: illu1,
-    title: 'Artwork 1',
-    // Paling atas: agak geser ke tengah
-    pos: 'top-[5vh] left-[-30px] xl:left-[10px] 2xl:left-[35px]',
+    title: 'Illustration 1',
+    pos: 'top-1 xl:top-2 left-[1vw] xl:left-[5vw] 2xl:left-[8vw]',
     rotate: '-rotate-[12deg]',
     z: 'z-10',
   },
   {
     src: illu3,
-    title: 'Artwork 3',
-    // Tengah atas: melengkung keluar ke kiri
-    pos: 'top-[27vh] left-[-90px] xl:left-[-50px] 2xl:left-[-25px]',
+    title: 'Illustration 3',
+    pos: 'top-[12vh] left-[-4vw] xl:left-[-1vw] 2xl:left-[1vw]',
     rotate: 'rotate-[7deg]',
     z: 'z-15',
   },
   {
     src: illu5,
-    title: 'Artwork 5',
-    // Tengah bawah: melengkung paling keluar ke kiri
-    pos: 'top-[49vh] left-[-100px] xl:left-[-60px] 2xl:left-[-35px]',
-    rotate: '-rotate-[14deg]',
+    title: 'Illustration 5',
+    pos: 'top-[26vh] left-[-8vw] xl:left-[-4vw] 2xl:left-[-2vw]',
+    rotate: '-rotate-[10deg]',
     z: 'z-20',
   },
   {
     src: illu7,
-    title: 'Artwork 7',
-    // Paling bawah: agak geser ke tengah kembali (menutup lengkungan)
-    pos: 'top-[71vh] left-[-30px] xl:left-[10px] 2xl:left-[35px]',
-    rotate: 'rotate-[9deg]',
+    title: 'Illustration 7',
+    pos: 'top-[40vh] left-[-10vw] xl:left-[-6vw] 2xl:left-[-3vw]',
+    rotate: 'rotate-[14deg]',
+    z: 'z-25',
+  },
+  {
+    src: illu9,
+    title: 'Illustration 9',
+    pos: 'top-[54vh] left-[-8vw] xl:left-[-4vw] 2xl:left-[-2vw]',
+    rotate: '-rotate-[8deg]',
+    z: 'z-20',
+  },
+  {
+    src: illu11,
+    title: 'Illustration 11',
+    pos: 'top-[67vh] left-[-4vw] xl:left-[-1vw] 2xl:left-[1vw]',
+    rotate: 'rotate-[11deg]',
+    z: 'z-15',
+  },
+  {
+    src: comic1,
+    title: 'Comic 1',
+    pos: 'top-[78vh] left-[0vw] xl:left-[3vw] 2xl:left-[5vw]',
+    rotate: '-rotate-[9deg]',
     z: 'z-10',
+  },
+  {
+    src: comic3,
+    title: 'Comic 3',
+    pos: 'bottom-1 xl:bottom-2 left-[1vw] xl:left-[5vw] 2xl:left-[8vw]',
+    rotate: 'rotate-[6deg]',
+    z: 'z-15',
   },
 ];
 
-// 4 kartu sisi KANAN membentuk pola LENGKUNGAN (arc):
-// Atas & Bawah digeser ke arah tengah, bagian Tengah melengkung keluar layar
+// KANAN: 8 karya besar tanpa bingkai, tersusun padat saling timpa dalam pola lengkungan
+// Mentok sampai batas viewport (atas top-1, bawah bottom-1)
 const rightArcArtworks = [
   {
     src: illu2,
-    title: 'Artwork 2',
-    // Paling atas: agak geser ke tengah
-    pos: 'top-[6vh] right-[-30px] xl:right-[10px] 2xl:right-[35px]',
+    title: 'Illustration 2',
+    pos: 'top-1 xl:top-2 right-[1vw] xl:right-[5vw] 2xl:right-[8vw]',
     rotate: 'rotate-[13deg]',
     z: 'z-10',
   },
   {
     src: illu4,
-    title: 'Artwork 4',
-    // Tengah atas: melengkung keluar ke kanan
-    pos: 'top-[28vh] right-[-90px] xl:right-[-50px] 2xl:right-[-25px]',
-    rotate: '-rotate-[9deg]',
+    title: 'Illustration 4',
+    pos: 'top-[12vh] right-[-4vw] xl:right-[-1vw] 2xl:right-[1vw]',
+    rotate: '-rotate-[8deg]',
     z: 'z-15',
   },
   {
     src: illu6,
-    title: 'Artwork 6',
-    // Tengah bawah: melengkung paling keluar ke kanan
-    pos: 'top-[50vh] right-[-100px] xl:right-[-60px] 2xl:right-[-35px]',
-    rotate: 'rotate-[15deg]',
+    title: 'Illustration 6',
+    pos: 'top-[26vh] right-[-8vw] xl:right-[-4vw] 2xl:right-[-2vw]',
+    rotate: 'rotate-[11deg]',
     z: 'z-20',
   },
   {
     src: illu8,
-    title: 'Artwork 8',
-    // Paling bawah: agak geser ke tengah kembali (menutup lengkungan)
-    pos: 'top-[72vh] right-[-30px] xl:right-[10px] 2xl:right-[35px]',
-    rotate: '-rotate-[8deg]',
+    title: 'Illustration 8',
+    pos: 'top-[40vh] right-[-10vw] xl:right-[-6vw] 2xl:right-[-3vw]',
+    rotate: '-rotate-[15deg]',
+    z: 'z-25',
+  },
+  {
+    src: illu10,
+    title: 'Illustration 10',
+    pos: 'top-[54vh] right-[-8vw] xl:right-[-4vw] 2xl:right-[-2vw]',
+    rotate: 'rotate-[9deg]',
+    z: 'z-20',
+  },
+  {
+    src: comic2,
+    title: 'Comic 2',
+    pos: 'top-[67vh] right-[-4vw] xl:right-[-1vw] 2xl:right-[1vw]',
+    rotate: '-rotate-[12deg]',
+    z: 'z-15',
+  },
+  {
+    src: comic4,
+    title: 'Comic 4',
+    pos: 'top-[78vh] right-[0vw] xl:right-[3vw] 2xl:right-[5vw]',
+    rotate: 'rotate-[8deg]',
     z: 'z-10',
+  },
+  {
+    src: comic5,
+    title: 'Comic 5',
+    pos: 'bottom-1 xl:bottom-2 right-[1vw] xl:right-[5vw] 2xl:right-[8vw]',
+    rotate: '-rotate-[7deg]',
+    z: 'z-15',
   },
 ];
 
 const allMobileArtworks = [
-  { src: illu1, title: 'Artwork 1', rotate: '-rotate-6' },
-  { src: illu2, title: 'Artwork 2', rotate: 'rotate-3' },
-  { src: illu3, title: 'Artwork 3', rotate: '-rotate-3' },
-  { src: illu4, title: 'Artwork 4', rotate: 'rotate-6' },
-  { src: illu5, title: 'Artwork 5', rotate: '-rotate-8' },
-  { src: illu6, title: 'Artwork 6', rotate: 'rotate-4' },
-  { src: illu7, title: 'Artwork 7', rotate: '-rotate-4' },
-  { src: illu8, title: 'Artwork 8', rotate: 'rotate-5' },
-  { src: illu9, title: 'Artwork 9', rotate: '-rotate-5' },
-  { src: illu10, title: 'Artwork 10', rotate: 'rotate-6' },
+  { src: illu1, title: 'Illustration 1', rotate: '-rotate-6' },
+  { src: illu2, title: 'Illustration 2', rotate: 'rotate-3' },
+  { src: illu3, title: 'Illustration 3', rotate: '-rotate-4' },
+  { src: illu4, title: 'Illustration 4', rotate: 'rotate-6' },
+  { src: illu5, title: 'Illustration 5', rotate: '-rotate-8' },
+  { src: illu6, title: 'Illustration 6', rotate: 'rotate-5' },
+  { src: illu7, title: 'Illustration 7', rotate: '-rotate-5' },
+  { src: illu8, title: 'Illustration 8', rotate: 'rotate-7' },
+  { src: illu9, title: 'Illustration 9', rotate: '-rotate-6' },
+  { src: illu10, title: 'Illustration 10', rotate: 'rotate-4' },
+  { src: illu11, title: 'Illustration 11', rotate: '-rotate-7' },
+  { src: comic1, title: 'Comic 1', rotate: 'rotate-5' },
+  { src: comic2, title: 'Comic 2', rotate: '-rotate-4' },
+  { src: comic3, title: 'Comic 3', rotate: 'rotate-6' },
+  { src: comic4, title: 'Comic 4', rotate: '-rotate-5' },
+  { src: comic5, title: 'Comic 5', rotate: 'rotate-3' },
 ];
 
 function getIcon(iconName) {
@@ -142,38 +203,39 @@ function getIcon(iconName) {
 
 export default function LinksPage() {
   return (
-    <div className="min-h-screen w-full bg-[#fbfbf9] text-[#33332e] font-sans antialiased relative overflow-x-hidden flex flex-col justify-between py-10 sm:py-14 px-4 selection:bg-[#f6f6f3] selection:text-[#000000]">
+    <div className="min-h-screen w-full bg-[#fbfbf9] text-[#33332e] font-sans antialiased relative overflow-x-hidden flex flex-col justify-between pt-10 sm:pt-14 pb-0 px-4 selection:bg-[#f6f6f3] selection:text-[#000000]">
       
       {/* ========================================================================= */}
-      {/* DESKTOP FIXED OVERLAY: Card Berserakan dengan Pola Lengkungan (Arc)       */}
-      {/* Posisi FIXED, ukuran besar, atas & bawah geser ke tengah membentuk curve */}
+      {/* DESKTOP FIXED OVERLAY: Karya Seni Berserakan Tanpa Bingkai (Frameless)    */}
+      {/* - Bayangan menyebar luas dan lembut (soft wide ambient shadow)            */}
+      {/* - Mentok sampai batas viewport (top-1 sampai bottom-1)                    */}
       {/* ========================================================================= */}
       <div className="fixed inset-0 pointer-events-none z-10 hidden lg:block overflow-hidden">
-        {/* Lengkungan Sisi Kiri */}
+        {/* Sisi Kiri: 8 Karya Besar Mentok Viewport */}
         {leftArcArtworks.map((art, idx) => (
           <div
             key={`left-${idx}`}
-            className={`absolute ${art.pos} ${art.rotate} ${art.z} w-52 xl:w-60 2xl:w-64 bg-[#ffffff] p-2.5 pb-4 rounded-[16px] border border-[#dadad3] shadow-md hover:shadow-2xl hover:scale-110 hover:rotate-0 hover:z-40 transition-all duration-300 pointer-events-auto cursor-pointer select-none`}
+            className={`absolute ${art.pos} ${art.rotate} ${art.z} w-64 xl:w-72 2xl:w-80 select-none drop-shadow-[0_25px_45px_rgba(0,0,0,0.11)]`}
           >
             <img
               src={art.src}
               alt={art.title}
-              className="w-full h-44 xl:h-52 2xl:h-56 object-cover rounded-[12px] bg-[#f6f6f3]"
+              className="w-full h-auto object-contain rounded-[14px] xl:rounded-[18px] block shadow-[0_15px_30px_rgba(0,0,0,0.06)]"
               loading="lazy"
             />
           </div>
         ))}
 
-        {/* Lengkungan Sisi Kanan */}
+        {/* Sisi Kanan: 8 Karya Besar Mentok Viewport */}
         {rightArcArtworks.map((art, idx) => (
           <div
             key={`right-${idx}`}
-            className={`absolute ${art.pos} ${art.rotate} ${art.z} w-52 xl:w-60 2xl:w-64 bg-[#ffffff] p-2.5 pb-4 rounded-[16px] border border-[#dadad3] shadow-md hover:shadow-2xl hover:scale-110 hover:rotate-0 hover:z-40 transition-all duration-300 pointer-events-auto cursor-pointer select-none`}
+            className={`absolute ${art.pos} ${art.rotate} ${art.z} w-64 xl:w-72 2xl:w-80 select-none drop-shadow-[0_25px_45px_rgba(0,0,0,0.11)]`}
           >
             <img
               src={art.src}
               alt={art.title}
-              className="w-full h-44 xl:h-52 2xl:h-56 object-cover rounded-[12px] bg-[#f6f6f3]"
+              className="w-full h-auto object-contain rounded-[14px] xl:rounded-[18px] block shadow-[0_15px_30px_rgba(0,0,0,0.06)]"
               loading="lazy"
             />
           </div>
@@ -304,32 +366,26 @@ export default function LinksPage() {
       </footer>
 
       {/* ============================================================ */}
-      {/* MOBILE ONLY: Tumpukan Card Berserakan di Bawah Footer        */}
+      {/* MOBILE ONLY: Gambar mentok ke bawah & kanan-kiri viewport    */}
+      {/* Menggunakan -mx-4 dan w-[calc(100%+2rem)] agar full-bleed    */}
       {/* ============================================================ */}
-      <section className="block lg:hidden relative z-20 w-full max-w-md mx-auto mt-10 pt-6 border-t border-[#dadad3]/60">
-        <div className="text-center mb-6">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#62625b]">
-            Artworks Showcase
-          </span>
-        </div>
-
-        {/* Tumpukan berserakan saling menimpa */}
-        <div className="flex flex-wrap justify-center items-center py-4 px-2 -space-x-5 -space-y-6">
-          {allMobileArtworks.map((art, idx) => (
+      <div className="block lg:hidden relative z-10 -mx-4 w-[calc(100%+2rem)] overflow-hidden mt-6 h-20 sm:h-24 pointer-events-none select-none">
+        <div className="flex justify-center items-start -space-x-8 sm:-space-x-10 translate-y-3 min-w-full">
+          {allMobileArtworks.slice(0, 9).map((art, idx) => (
             <div
               key={idx}
-              className={`relative w-32 sm:w-36 bg-[#ffffff] p-2 pb-3 rounded-[16px] border border-[#dadad3] shadow-sm active:scale-105 active:rotate-0 active:z-30 transition-all duration-200 cursor-pointer ${art.rotate}`}
+              className={`shrink-0 w-28 sm:w-36 drop-shadow-[0_20px_35px_rgba(0,0,0,0.10)] ${art.rotate}`}
             >
               <img
                 src={art.src}
                 alt={art.title}
-                className="w-full h-32 sm:h-36 object-cover rounded-[12px] bg-[#f6f6f3]"
+                className="w-full h-auto object-cover rounded-[14px] block shadow-[0_10px_20px_rgba(0,0,0,0.05)]"
                 loading="lazy"
               />
             </div>
           ))}
         </div>
-      </section>
+      </div>
 
     </div>
   );
