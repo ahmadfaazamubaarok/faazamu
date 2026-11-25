@@ -9,75 +9,94 @@ import {
   FaGithub, 
   FaWhatsapp, 
   FaLinkedinIn,
-  FaPalette
+  FaPalette,
+  FaBrush
 } from 'react-icons/fa6';
+import { comms, medsos } from '../data/linksData';
 
-const socials = [
-  {
-    name: 'Instagram',
-    url: 'https://instagram.com/faazamuartwork',
-    icon: <FaInstagram className="w-8 h-8 md:w-12 md:h-12 text-white" />,
-    bg: 'bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600',
-    pos: { top: '5%', left: '25%' },
-    parallaxRange: ["20px", "-40px"]
-  },
-  {
-    name: 'Pinterest',
-    url: 'https://id.pinterest.com/faazamuartwork/',
-    icon: <FaPinterest className="w-8 h-8 md:w-12 md:h-12 text-white" />,
-    bg: 'bg-[#E60023]',
-    pos: { top: '45%', left: '12%' },
-    parallaxRange: ["-30px", "30px"]
-  },
-  {
-    name: 'X / Twitter',
-    url: 'https://x.com/faazamuartwork',
-    icon: <FaXTwitter className="w-8 h-8 md:w-12 md:h-12 text-white" />,
-    bg: 'bg-black',
-    pos: { top: '15%', left: '52%' },
-    parallaxRange: ["40px", "-20px"]
-  },
-  {
-    name: 'Facebook',
-    url: 'https://facebook.com/ahmadfaazamubaarok',
-    icon: <FaFacebookF className="w-8 h-8 md:w-12 md:h-12 text-white" />,
-    bg: 'bg-[#1877F2]',
-    pos: { top: '65%', left: '38%' },
-    parallaxRange: ["-20px", "40px"]
-  },
-  {
-    name: 'GitHub',
-    url: 'https://github.com/ahmadfaazamubaarok',
-    icon: <FaGithub className="w-8 h-8 md:w-12 md:h-12 text-white" />,
-    bg: 'bg-[#333333]',
-    pos: { top: '10%', left: '75%' },
-    parallaxRange: ["35px", "-30px"]
-  },
-  {
-    name: 'LinkedIn',
-    url: 'https://linkedin.com/in/ahmadfaazamubaarok',
-    icon: <FaLinkedinIn className="w-8 h-8 md:w-12 md:h-12 text-white" />,
-    bg: 'bg-[#0A66C2]',
-    pos: { top: '55%', left: '85%' },
-    parallaxRange: ["-40px", "20px"]
-  },
-  {
-    name: 'WhatsApp',
-    url: 'https://wa.me/6285869026062',
-    icon: <FaWhatsapp className="w-8 h-8 md:w-12 md:h-12 text-white" />,
-    bg: 'bg-[#25D366]',
-    pos: { top: '25%', left: '95%' },
-    parallaxRange: ["30px", "-25px"]
-  },
-  {
-    name: 'VGen',
-    url: 'https://vgen.co/bakekok',
-    icon: <FaPalette className="w-8 h-8 md:w-12 md:h-12 text-white" />,
-    bg: 'bg-gradient-to-tr from-indigo-500 to-purple-500',
-    pos: { top: '75%', left: '65%' },
-    parallaxRange: ["-25px", "35px"]
-  }
-];
+// Helper untuk mengambil URL tersinkronisasi dari linksData.js
+const getSocialsList = () => {
+  const all = [...medsos, ...comms];
+  const getUrl = (name, fallback = '#') => {
+    const item = all.find(i => i.name.toLowerCase() === name.toLowerCase());
+    return item ? item.url : fallback;
+  };
+
+  return [
+    {
+      name: 'Instagram',
+      url: getUrl('Instagram'),
+      icon: <FaInstagram className="w-8 h-8 md:w-12 md:h-12 text-white" />,
+      bg: 'bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600',
+      pos: { top: '5%', left: '22%' },
+      parallaxRange: ["20px", "-40px"]
+    },
+    {
+      name: 'Pinterest',
+      url: getUrl('Pinterest'),
+      icon: <FaPinterest className="w-8 h-8 md:w-12 md:h-12 text-white" />,
+      bg: 'bg-[#E60023]',
+      pos: { top: '45%', left: '10%' },
+      parallaxRange: ["-30px", "30px"]
+    },
+    {
+      name: 'X',
+      url: getUrl('X', getUrl('twitter')),
+      icon: <FaXTwitter className="w-8 h-8 md:w-12 md:h-12 text-white" />,
+      bg: 'bg-black',
+      pos: { top: '15%', left: '48%' },
+      parallaxRange: ["40px", "-20px"]
+    },
+    {
+      name: 'Facebook',
+      url: getUrl('Facebook'),
+      icon: <FaFacebookF className="w-8 h-8 md:w-12 md:h-12 text-white" />,
+      bg: 'bg-[#1877F2]',
+      pos: { top: '65%', left: '36%' },
+      parallaxRange: ["-20px", "40px"]
+    },
+    {
+      name: 'GitHub',
+      url: getUrl('GitHub'),
+      icon: <FaGithub className="w-8 h-8 md:w-12 md:h-12 text-white" />,
+      bg: 'bg-[#333333]',
+      pos: { top: '10%', left: '72%' },
+      parallaxRange: ["35px", "-30px"]
+    },
+    {
+      name: 'LinkedIn',
+      url: getUrl('LinkedIn'),
+      icon: <FaLinkedinIn className="w-8 h-8 md:w-12 md:h-12 text-white" />,
+      bg: 'bg-[#0A66C2]',
+      pos: { top: '55%', left: '84%' },
+      parallaxRange: ["-40px", "20px"]
+    },
+    {
+      name: 'WhatsApp',
+      url: getUrl('WhatsApp'),
+      icon: <FaWhatsapp className="w-8 h-8 md:w-12 md:h-12 text-white" />,
+      bg: 'bg-[#25D366]',
+      pos: { top: '25%', left: '95%' },
+      parallaxRange: ["30px", "-25px"]
+    },
+    {
+      name: 'VGen',
+      url: getUrl('VGen'),
+      icon: <FaPalette className="w-8 h-8 md:w-12 md:h-12 text-white" />,
+      bg: 'bg-gradient-to-tr from-indigo-500 to-purple-500',
+      pos: { top: '75%', left: '62%' },
+      parallaxRange: ["-25px", "35px"]
+    },
+    {
+      name: 'drawmarket',
+      url: getUrl('drawmarket'),
+      icon: <FaBrush className="w-8 h-8 md:w-12 md:h-12 text-white" />,
+      bg: 'bg-gradient-to-tr from-emerald-500 to-teal-600',
+      pos: { top: '75%', left: '20%' },
+      parallaxRange: ["-20px", "30px"]
+    }
+  ];
+};
 
 // Komponen helper untuk setiap Bubble agar bisa memanggil useTransform secara independen
 const Bubble = ({ social, index, scrollYProgress }) => {
@@ -133,6 +152,7 @@ const Bubble = ({ social, index, scrollYProgress }) => {
 const LetsConnectSection = () => {
   const { t } = useLanguage();
   const containerRef = useRef(null);
+  const socials = getSocialsList();
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -169,10 +189,27 @@ const LetsConnectSection = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="text-slate-500 max-w-lg mx-auto text-base md:text-lg"
+          className="text-slate-500 max-w-lg mx-auto text-base md:text-lg mb-6"
         >
           {t('connect', 'subtitle')}
         </motion.p>
+
+        {/* Link cepat ke /link hub */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="pointer-events-auto"
+        >
+          <a
+            href="/link"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold bg-slate-900 hover:bg-slate-800 text-white shadow-sm transition-all hover:scale-105"
+          >
+            <span>Buka Halaman Link & Komisi</span>
+            <span>↗</span>
+          </a>
+        </motion.div>
       </div>
 
       {/* Floating Bubbles Clustered Below */}
