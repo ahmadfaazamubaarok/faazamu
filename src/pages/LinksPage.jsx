@@ -25,20 +25,78 @@ import illu8 from '../assets/illustrationArtworks/illustrations/illustration8.we
 import illu9 from '../assets/illustrationArtworks/illustrations/illustration9.webp';
 import illu10 from '../assets/illustrationArtworks/illustrations/illustration10.webp';
 
-// 4 kartu di kiri, tumpukan rapat agar tidak melebihi tinggi footer
-const leftArtworks = [
-  { src: illu1, title: 'Artwork 1', rotate: '-rotate-[8deg]', offset: '-translate-x-2', z: 'z-10' },
-  { src: illu3, title: 'Artwork 3', rotate: 'rotate-[6deg]', offset: 'translate-x-3', z: 'z-15' },
-  { src: illu5, title: 'Artwork 5', rotate: '-rotate-[7deg]', offset: '-translate-x-1', z: 'z-20' },
-  { src: illu7, title: 'Artwork 7', rotate: 'rotate-[5deg]', offset: 'translate-x-2', z: 'z-10' },
+// 4 kartu sisi KIRI membentuk pola LENGKUNGAN (arc):
+// Atas & Bawah digeser ke arah tengah, bagian Tengah melengkung keluar layar
+const leftArcArtworks = [
+  {
+    src: illu1,
+    title: 'Artwork 1',
+    // Paling atas: agak geser ke tengah
+    pos: 'top-[5vh] left-[-30px] xl:left-[10px] 2xl:left-[35px]',
+    rotate: '-rotate-[12deg]',
+    z: 'z-10',
+  },
+  {
+    src: illu3,
+    title: 'Artwork 3',
+    // Tengah atas: melengkung keluar ke kiri
+    pos: 'top-[27vh] left-[-90px] xl:left-[-50px] 2xl:left-[-25px]',
+    rotate: 'rotate-[7deg]',
+    z: 'z-15',
+  },
+  {
+    src: illu5,
+    title: 'Artwork 5',
+    // Tengah bawah: melengkung paling keluar ke kiri
+    pos: 'top-[49vh] left-[-100px] xl:left-[-60px] 2xl:left-[-35px]',
+    rotate: '-rotate-[14deg]',
+    z: 'z-20',
+  },
+  {
+    src: illu7,
+    title: 'Artwork 7',
+    // Paling bawah: agak geser ke tengah kembali (menutup lengkungan)
+    pos: 'top-[71vh] left-[-30px] xl:left-[10px] 2xl:left-[35px]',
+    rotate: 'rotate-[9deg]',
+    z: 'z-10',
+  },
 ];
 
-// 4 kartu di kanan, tumpukan rapat agar tidak melebihi tinggi footer
-const rightArtworks = [
-  { src: illu2, title: 'Artwork 2', rotate: 'rotate-[8deg]', offset: 'translate-x-2', z: 'z-10' },
-  { src: illu4, title: 'Artwork 4', rotate: '-rotate-[6deg]', offset: '-translate-x-3', z: 'z-15' },
-  { src: illu6, title: 'Artwork 6', rotate: 'rotate-[7deg]', offset: 'translate-x-1', z: 'z-20' },
-  { src: illu8, title: 'Artwork 8', rotate: '-rotate-[5deg]', offset: '-translate-x-2', z: 'z-10' },
+// 4 kartu sisi KANAN membentuk pola LENGKUNGAN (arc):
+// Atas & Bawah digeser ke arah tengah, bagian Tengah melengkung keluar layar
+const rightArcArtworks = [
+  {
+    src: illu2,
+    title: 'Artwork 2',
+    // Paling atas: agak geser ke tengah
+    pos: 'top-[6vh] right-[-30px] xl:right-[10px] 2xl:right-[35px]',
+    rotate: 'rotate-[13deg]',
+    z: 'z-10',
+  },
+  {
+    src: illu4,
+    title: 'Artwork 4',
+    // Tengah atas: melengkung keluar ke kanan
+    pos: 'top-[28vh] right-[-90px] xl:right-[-50px] 2xl:right-[-25px]',
+    rotate: '-rotate-[9deg]',
+    z: 'z-15',
+  },
+  {
+    src: illu6,
+    title: 'Artwork 6',
+    // Tengah bawah: melengkung paling keluar ke kanan
+    pos: 'top-[50vh] right-[-100px] xl:right-[-60px] 2xl:right-[-35px]',
+    rotate: 'rotate-[15deg]',
+    z: 'z-20',
+  },
+  {
+    src: illu8,
+    title: 'Artwork 8',
+    // Paling bawah: agak geser ke tengah kembali (menutup lengkungan)
+    pos: 'top-[72vh] right-[-30px] xl:right-[10px] 2xl:right-[35px]',
+    rotate: '-rotate-[8deg]',
+    z: 'z-10',
+  },
 ];
 
 const allMobileArtworks = [
@@ -86,51 +144,41 @@ export default function LinksPage() {
   return (
     <div className="min-h-screen w-full bg-[#fbfbf9] text-[#33332e] font-sans antialiased relative overflow-x-hidden flex flex-col justify-between py-10 sm:py-14 px-4 selection:bg-[#f6f6f3] selection:text-[#000000]">
       
-      {/* ============================================================ */}
-      {/* DESKTOP ONLY: Card Berserakan di Sisi Kiri                   */}
-      {/* Keluar dari viewport (-left-14 / -left-20)                   */}
-      {/* Tinggi tumpukan terkunci rapat agar tidak melebihi footer    */}
-      {/* ============================================================ */}
-      <aside className="hidden lg:flex flex-col absolute -left-14 xl:-left-20 2xl:-left-24 top-10 w-44 xl:w-52 pointer-events-auto select-none z-10">
-        {leftArtworks.map((art, idx) => (
+      {/* ========================================================================= */}
+      {/* DESKTOP FIXED OVERLAY: Card Berserakan dengan Pola Lengkungan (Arc)       */}
+      {/* Posisi FIXED, ukuran besar, atas & bawah geser ke tengah membentuk curve */}
+      {/* ========================================================================= */}
+      <div className="fixed inset-0 pointer-events-none z-10 hidden lg:block overflow-hidden">
+        {/* Lengkungan Sisi Kiri */}
+        {leftArcArtworks.map((art, idx) => (
           <div
-            key={idx}
-            className={`w-44 xl:w-52 bg-[#ffffff] p-2.5 pb-3.5 rounded-[16px] border border-[#dadad3] shadow-sm hover:shadow-2xl hover:scale-110 hover:rotate-0 hover:translate-x-12 hover:z-30 transition-all duration-300 cursor-pointer ${
-              idx > 0 ? '-mt-16 xl:-mt-20' : ''
-            } ${art.rotate} ${art.offset} ${art.z}`}
+            key={`left-${idx}`}
+            className={`absolute ${art.pos} ${art.rotate} ${art.z} w-52 xl:w-60 2xl:w-64 bg-[#ffffff] p-2.5 pb-4 rounded-[16px] border border-[#dadad3] shadow-md hover:shadow-2xl hover:scale-110 hover:rotate-0 hover:z-40 transition-all duration-300 pointer-events-auto cursor-pointer select-none`}
           >
             <img
               src={art.src}
               alt={art.title}
-              className="w-full h-36 xl:h-44 object-cover rounded-[12px] bg-[#f6f6f3]"
+              className="w-full h-44 xl:h-52 2xl:h-56 object-cover rounded-[12px] bg-[#f6f6f3]"
               loading="lazy"
             />
           </div>
         ))}
-      </aside>
 
-      {/* ============================================================ */}
-      {/* DESKTOP ONLY: Card Berserakan di Sisi Kanan                  */}
-      {/* Keluar dari viewport (-right-14 / -right-20)                 */}
-      {/* Tinggi tumpukan terkunci rapat agar tidak melebihi footer    */}
-      {/* ============================================================ */}
-      <aside className="hidden lg:flex flex-col absolute -right-14 xl:-right-20 2xl:-right-24 top-14 w-44 xl:w-52 pointer-events-auto select-none z-10 items-end">
-        {rightArtworks.map((art, idx) => (
+        {/* Lengkungan Sisi Kanan */}
+        {rightArcArtworks.map((art, idx) => (
           <div
-            key={idx}
-            className={`w-44 xl:w-52 bg-[#ffffff] p-2.5 pb-3.5 rounded-[16px] border border-[#dadad3] shadow-sm hover:shadow-2xl hover:scale-110 hover:rotate-0 hover:-translate-x-12 hover:z-30 transition-all duration-300 cursor-pointer ${
-              idx > 0 ? '-mt-16 xl:-mt-20' : ''
-            } ${art.rotate} ${art.offset} ${art.z}`}
+            key={`right-${idx}`}
+            className={`absolute ${art.pos} ${art.rotate} ${art.z} w-52 xl:w-60 2xl:w-64 bg-[#ffffff] p-2.5 pb-4 rounded-[16px] border border-[#dadad3] shadow-md hover:shadow-2xl hover:scale-110 hover:rotate-0 hover:z-40 transition-all duration-300 pointer-events-auto cursor-pointer select-none`}
           >
             <img
               src={art.src}
               alt={art.title}
-              className="w-full h-36 xl:h-44 object-cover rounded-[12px] bg-[#f6f6f3]"
+              className="w-full h-44 xl:h-52 2xl:h-56 object-cover rounded-[12px] bg-[#f6f6f3]"
               loading="lazy"
             />
           </div>
         ))}
-      </aside>
+      </div>
 
       {/* ============================================================ */}
       {/* MAIN CONTENT: Pinterest Bento / Tile Board                    */}
