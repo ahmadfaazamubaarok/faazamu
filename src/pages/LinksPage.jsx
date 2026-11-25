@@ -13,6 +13,47 @@ import {
 import { ExternalLink } from 'lucide-react';
 import { profile, comms, medsos } from '../../linksData';
 
+// Import gambar ilustrasi untuk dekorasi samping desktop & mobile stack
+import illu1 from '../assets/illustrationArtworks/illustrations/illustration1.webp';
+import illu2 from '../assets/illustrationArtworks/illustrations/illustration2.webp';
+import illu3 from '../assets/illustrationArtworks/illustrations/illustration3.webp';
+import illu4 from '../assets/illustrationArtworks/illustrations/illustration4.webp';
+import illu5 from '../assets/illustrationArtworks/illustrations/illustration5.webp';
+import illu6 from '../assets/illustrationArtworks/illustrations/illustration6.webp';
+import illu7 from '../assets/illustrationArtworks/illustrations/illustration7.webp';
+import illu8 from '../assets/illustrationArtworks/illustrations/illustration8.webp';
+import illu9 from '../assets/illustrationArtworks/illustrations/illustration9.webp';
+import illu10 from '../assets/illustrationArtworks/illustrations/illustration10.webp';
+
+const leftArtworks = [
+  { src: illu1, title: 'Artwork 1', rotate: '-rotate-[6deg]', offset: '-ml-4', z: 'z-10' },
+  { src: illu3, title: 'Artwork 3', rotate: 'rotate-[5deg]', offset: 'ml-2', z: 'z-15' },
+  { src: illu5, title: 'Artwork 5', rotate: '-rotate-[8deg]', offset: '-ml-2', z: 'z-20' },
+  { src: illu7, title: 'Artwork 7', rotate: 'rotate-[4deg]', offset: 'ml-4', z: 'z-10' },
+  { src: illu9, title: 'Artwork 9', rotate: '-rotate-[5deg]', offset: '-ml-1', z: 'z-15' },
+];
+
+const rightArtworks = [
+  { src: illu2, title: 'Artwork 2', rotate: 'rotate-[6deg]', offset: '-mr-4', z: 'z-10' },
+  { src: illu4, title: 'Artwork 4', rotate: '-rotate-[5deg]', offset: 'mr-2', z: 'z-15' },
+  { src: illu6, title: 'Artwork 6', rotate: 'rotate-[8deg]', offset: '-mr-2', z: 'z-20' },
+  { src: illu8, title: 'Artwork 8', rotate: '-rotate-[6deg]', offset: 'mr-4', z: 'z-10' },
+  { src: illu10, title: 'Artwork 10', rotate: 'rotate-[4deg]', offset: '-mr-1', z: 'z-15' },
+];
+
+const allMobileArtworks = [
+  { src: illu1, title: 'Artwork 1', rotate: '-rotate-6' },
+  { src: illu2, title: 'Artwork 2', rotate: 'rotate-3' },
+  { src: illu3, title: 'Artwork 3', rotate: '-rotate-3' },
+  { src: illu4, title: 'Artwork 4', rotate: 'rotate-6' },
+  { src: illu5, title: 'Artwork 5', rotate: '-rotate-8' },
+  { src: illu6, title: 'Artwork 6', rotate: 'rotate-4' },
+  { src: illu7, title: 'Artwork 7', rotate: '-rotate-4' },
+  { src: illu8, title: 'Artwork 8', rotate: 'rotate-5' },
+  { src: illu9, title: 'Artwork 9', rotate: '-rotate-5' },
+  { src: illu10, title: 'Artwork 10', rotate: 'rotate-6' },
+];
+
 function getIcon(iconName) {
   switch (iconName?.toLowerCase()) {
     case 'vgen':
@@ -43,8 +84,54 @@ function getIcon(iconName) {
 
 export default function LinksPage() {
   return (
-    <div className="min-h-screen w-full bg-[#fbfbf9] text-[#33332e] font-sans antialiased flex flex-col justify-between py-10 sm:py-14 px-4 selection:bg-[#f6f6f3] selection:text-[#000000]">
-      <main className="w-full max-w-2xl mx-auto flex flex-col gap-6">
+    <div className="min-h-screen w-full bg-[#fbfbf9] text-[#33332e] font-sans antialiased relative overflow-x-hidden flex flex-col justify-between py-10 sm:py-14 px-4 selection:bg-[#f6f6f3] selection:text-[#000000]">
+      
+      {/* ============================================================ */}
+      {/* DESKTOP ONLY: Card Berserakan di Samping Kiri (Saling Timpa)  */}
+      {/* ============================================================ */}
+      <aside className="hidden lg:flex flex-col absolute left-2 xl:left-8 top-12 w-44 xl:w-52 pointer-events-auto select-none z-10">
+        {leftArtworks.map((art, idx) => (
+          <div
+            key={idx}
+            className={`w-40 xl:w-48 bg-[#ffffff] p-2 pb-3.5 rounded-[16px] border border-[#dadad3] shadow-sm hover:shadow-2xl hover:scale-110 hover:rotate-0 hover:z-30 transition-all duration-300 cursor-pointer ${
+              idx > 0 ? '-mt-10 xl:-mt-12' : ''
+            } ${art.rotate} ${art.offset} ${art.z}`}
+          >
+            <img
+              src={art.src}
+              alt={art.title}
+              className="w-full h-44 xl:h-52 object-cover rounded-[12px] bg-[#f6f6f3]"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </aside>
+
+      {/* ============================================================ */}
+      {/* DESKTOP ONLY: Card Berserakan di Samping Kanan (Saling Timpa) */}
+      {/* ============================================================ */}
+      <aside className="hidden lg:flex flex-col absolute right-2 xl:right-8 top-16 w-44 xl:w-52 pointer-events-auto select-none z-10 items-end">
+        {rightArtworks.map((art, idx) => (
+          <div
+            key={idx}
+            className={`w-40 xl:w-48 bg-[#ffffff] p-2 pb-3.5 rounded-[16px] border border-[#dadad3] shadow-sm hover:shadow-2xl hover:scale-110 hover:rotate-0 hover:z-30 transition-all duration-300 cursor-pointer ${
+              idx > 0 ? '-mt-10 xl:-mt-12' : ''
+            } ${art.rotate} ${art.offset} ${art.z}`}
+          >
+            <img
+              src={art.src}
+              alt={art.title}
+              className="w-full h-44 xl:h-52 object-cover rounded-[12px] bg-[#f6f6f3]"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </aside>
+
+      {/* ============================================================ */}
+      {/* MAIN CONTENT: Pinterest Bento / Tile Board                    */}
+      {/* ============================================================ */}
+      <main className="relative z-20 w-full max-w-2xl mx-auto flex flex-col gap-6">
         {/* Profile Card — Satu-satunya kartu berwarna (Pinterest Red #e60023) */}
         <div className="w-full bg-[#e60023] rounded-[32px] p-6 sm:p-8 flex flex-col sm:flex-row items-center sm:items-start gap-5 sm:gap-6 text-center sm:text-left text-white shadow-none">
           <img
@@ -148,8 +235,10 @@ export default function LinksPage() {
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="w-full max-w-2xl mx-auto mt-12 pt-6 border-t border-[#dadad3] text-center flex flex-col items-center gap-2">
+      {/* ============================================================ */}
+      {/* FOOTER                                                       */}
+      {/* ============================================================ */}
+      <footer className="relative z-20 w-full max-w-2xl mx-auto mt-12 pt-6 border-t border-[#dadad3] text-center flex flex-col items-center gap-2">
         <a
           href="/"
           className="text-xs font-semibold text-[#62625b] hover:text-[#000000] transition-colors inline-flex items-center gap-1.5"
@@ -161,6 +250,35 @@ export default function LinksPage() {
           © {new Date().getFullYear()} {profile.name}
         </p>
       </footer>
+
+      {/* ============================================================ */}
+      {/* MOBILE ONLY: Tumpukan Card Berserakan di Bawah Footer        */}
+      {/* ============================================================ */}
+      <section className="block lg:hidden relative z-20 w-full max-w-md mx-auto mt-10 pt-6 border-t border-[#dadad3]/60">
+        <div className="text-center mb-6">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#62625b]">
+            Artworks Showcase
+          </span>
+        </div>
+
+        {/* Tumpukan berserakan saling menimpa */}
+        <div className="flex flex-wrap justify-center items-center py-4 px-2 -space-x-5 -space-y-6">
+          {allMobileArtworks.map((art, idx) => (
+            <div
+              key={idx}
+              className={`relative w-32 sm:w-36 bg-[#ffffff] p-2 pb-3 rounded-[16px] border border-[#dadad3] shadow-sm active:scale-105 active:rotate-0 active:z-30 transition-all duration-200 cursor-pointer ${art.rotate}`}
+            >
+              <img
+                src={art.src}
+                alt={art.title}
+                className="w-full h-32 sm:h-36 object-cover rounded-[12px] bg-[#f6f6f3]"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+
     </div>
   );
 }
