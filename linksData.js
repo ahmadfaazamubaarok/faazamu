@@ -29,7 +29,7 @@ export const medsos = [
   {
     name: "Instagram",
     handle: "@bakekokart",
-    url: "https://instagram.com/bakekok",
+    url: "https://instagram.com/bakekokart",
     icon: "instagram",
   },
   {
